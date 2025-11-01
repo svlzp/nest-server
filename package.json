@@ -5,6 +5,10 @@
   "author": "",
   "private": true,
   "license": "UNLICENSED",
+  "engines": {
+    "node": "22.x",
+    "npm": "10.x"
+  },
   "scripts": {
     "build": "nest build",
     "format": "prettier --write \"src/**/*.ts\" \"test/**/*.ts\"",
@@ -18,8 +22,7 @@
     "test:cov": "jest --coverage",
     "test:debug": "node --inspect-brk -r tsconfig-paths/register -r ts-node/register node_modules/.bin/jest --runInBand",
     "test:e2e": "jest --config ./test/jest-e2e.json",
-    "postinstall": "prisma generate",
-    "heroku-postbuild": "npm run build"
+    "heroku-postbuild": "prisma generate && npm run build"
   },
   "dependencies": {
     "@nestjs/common": "^11.0.1",
@@ -31,6 +34,7 @@
     "@nestjs/swagger": "^11.2.1",
     "@nestlab/google-recaptcha": "^3.10.0",
     "@prisma/client": "^6.18.0",
+    "prisma": "^6.18.0",
     "@react-email/components": "^0.1.1",
     "@react-email/html": "^0.0.11",
     "@types/multer": "^2.0.0",
