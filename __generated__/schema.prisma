@@ -1,0 +1,182 @@
+generator client {
+  provider = "prisma-client-js"
+  output   = "../__generated__"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("POSTGRES_URI")
+}
+
+model User {
+  id       Int      @id @default(autoincrement())
+  email    String   @unique
+  name     String?
+  picture  String?
+  role     UserRole @default(USER)
+  password String
+
+  isVerified         Boolean @default(false)
+  isTwoFactorEnabled Boolean @default(false)
+
+  accounts Account[]
+
+  authMethod AuthMethod @default(CREDENTIALS)
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@map("users")
+}
+
+model Account {
+  id                Int    @id @default(autoincrement())
+  provider          String
+  providerAccountId String
+  type              String
+
+  refreshToken String?
+  accessToken  String?
+  expiresAt    Int?
+
+  user   User @relation(fields: [userId], references: [id])
+  userId Int
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@unique([provider, providerAccountId])
+  @@map("accounts")
+}
+
+model Tokken {
+  id        Int        @id @default(autoincrement())
+  email     String
+  token     String     @unique
+  type      TokkenType
+  expiresIn DateTime
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@map("tokens")
+}
+
+model tools {
+  id          Int     @id @default(autoincrement())
+  name        String
+  tool_id     String  @unique
+  description String?
+  size        String?
+  type        String?
+
+  files FileUpload[]
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@map("tools")
+}
+
+model machine_cnc {
+  id          Int     @id @default(autoincrement())
+  name        String
+  description String?
+
+  files          FileUpload[]
+  workOvernights workOvernight[]
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@map("machine_cnc")
+}
+
+model workOvernight {
+  id             Int     @id @default(autoincrement())
+  name           String?
+  rt             String  @unique
+  quantity       Int
+  madeBy         String?
+  leftToMake     Int
+  productionTime String?
+
+  isArchived Boolean   @default(false)
+  archivedAt DateTime?
+
+  machine   machine_cnc @relation(fields: [machineId], references: [id], onDelete: Cascade)
+  machineId Int
+
+  stages workStage[]
+  files  FileUpload[]
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@map("work_overnight")
+}
+
+model workStage {
+  id          Int     @id @default(autoincrement())
+  stepNumber  Int
+  description String?
+
+  work   workOvernight @relation(fields: [workId], references: [id], onDelete: Cascade)
+  workId Int
+
+  files FileUpload[]
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@map("work_stages")
+}
+
+model FileUpload {
+  id           Int      @id @default(autoincrement())
+  filename     String
+  originalName String
+  path         String
+  mimeType     String
+  size         Int
+  type         FileType
+
+  toolId Int?
+  tool   tools? @relation(fields: [toolId], references: [id], onDelete: Cascade)
+
+  machineId Int?
+  machine   machine_cnc? @relation(fields: [machineId], references: [id], onDelete: Cascade)
+
+  workId Int?
+  work   workOvernight? @relation(fields: [workId], references: [id], onDelete: Cascade)
+
+  stageId Int?
+  stage   workStage? @relation(fields: [stageId], references: [id], onDelete: Cascade)
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@map("files")
+}
+
+enum FileType {
+  IMAGE
+  VIDEO
+}
+
+enum UserRole {
+  USER
+  ADMIN
+}
+
+enum AuthMethod {
+  CREDENTIALS
+  GOOGLE
+  GITHUB
+}
+
+enum TokkenType {
+  VERIFICATION
+  RESET_PASSWORD
+  TWO_FACTOR_AUTH
+}
