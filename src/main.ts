@@ -70,6 +70,10 @@ async function bootstrap() {
 		credentials: true,
 		exposedHeaders: ['set-cookie']
 	})
-	await app.listen(config.getOrThrow<number>('APPLICATION_PORT') ?? 4000)
+	const port =
+		config.getOrThrow<number>('PORT') ||
+		config.getOrThrow<number>('APPLICATION_PORT') ||
+		4000
+	await app.listen(port)
 }
 void bootstrap()
