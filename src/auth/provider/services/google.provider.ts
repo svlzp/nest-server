@@ -3,7 +3,6 @@ import { IGoogleProfile } from './types/google-provider.types'
 import { IOptionsProvider } from './types/options-provider.types'
 import { IUserInfoProvider } from './types/user-info.types'
 
-
 export class GoogleProvider extends BaseOAuthService {
 	private GOOGLE_BASE_URL = 'https://www.googleapis.com'
 

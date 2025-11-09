@@ -53,6 +53,16 @@ export type workStage = $Result.DefaultSelection<Prisma.$workStagePayload>
  * 
  */
 export type FileUpload = $Result.DefaultSelection<Prisma.$FileUploadPayload>
+/**
+ * Model Learning
+ * 
+ */
+export type Learning = $Result.DefaultSelection<Prisma.$LearningPayload>
+/**
+ * Model ContentLearning
+ * 
+ */
+export type ContentLearning = $Result.DefaultSelection<Prisma.$ContentLearningPayload>
 
 /**
  * Enums
@@ -306,6 +316,26 @@ export class PrismaClient<
     * ```
     */
   get fileUpload(): Prisma.FileUploadDelegate<ExtArgs, ClientOptions>;
+
+  /**
+   * `prisma.learning`: Exposes CRUD operations for the **Learning** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more Learnings
+    * const learnings = await prisma.learning.findMany()
+    * ```
+    */
+  get learning(): Prisma.LearningDelegate<ExtArgs, ClientOptions>;
+
+  /**
+   * `prisma.contentLearning`: Exposes CRUD operations for the **ContentLearning** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more ContentLearnings
+    * const contentLearnings = await prisma.contentLearning.findMany()
+    * ```
+    */
+  get contentLearning(): Prisma.ContentLearningDelegate<ExtArgs, ClientOptions>;
 }
 
 export namespace Prisma {
@@ -754,7 +784,9 @@ export namespace Prisma {
     machine_cnc: 'machine_cnc',
     workOvernight: 'workOvernight',
     workStage: 'workStage',
-    FileUpload: 'FileUpload'
+    FileUpload: 'FileUpload',
+    Learning: 'Learning',
+    ContentLearning: 'ContentLearning'
   };
 
   export type ModelName = (typeof ModelName)[keyof typeof ModelName]
@@ -773,7 +805,7 @@ export namespace Prisma {
       omit: GlobalOmitOptions
     }
     meta: {
-      modelProps: "user" | "account" | "tokken" | "tools" | "machine_cnc" | "workOvernight" | "workStage" | "fileUpload"
+      modelProps: "user" | "account" | "tokken" | "tools" | "machine_cnc" | "workOvernight" | "workStage" | "fileUpload" | "learning" | "contentLearning"
       txIsolationLevel: Prisma.TransactionIsolationLevel
     }
     model: {
@@ -1369,6 +1401,154 @@ export namespace Prisma {
           }
         }
       }
+      Learning: {
+        payload: Prisma.$LearningPayload<ExtArgs>
+        fields: Prisma.LearningFieldRefs
+        operations: {
+          findUnique: {
+            args: Prisma.LearningFindUniqueArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$LearningPayload> | null
+          }
+          findUniqueOrThrow: {
+            args: Prisma.LearningFindUniqueOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$LearningPayload>
+          }
+          findFirst: {
+            args: Prisma.LearningFindFirstArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$LearningPayload> | null
+          }
+          findFirstOrThrow: {
+            args: Prisma.LearningFindFirstOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$LearningPayload>
+          }
+          findMany: {
+            args: Prisma.LearningFindManyArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$LearningPayload>[]
+          }
+          create: {
+            args: Prisma.LearningCreateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$LearningPayload>
+          }
+          createMany: {
+            args: Prisma.LearningCreateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          createManyAndReturn: {
+            args: Prisma.LearningCreateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$LearningPayload>[]
+          }
+          delete: {
+            args: Prisma.LearningDeleteArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$LearningPayload>
+          }
+          update: {
+            args: Prisma.LearningUpdateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$LearningPayload>
+          }
+          deleteMany: {
+            args: Prisma.LearningDeleteManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateMany: {
+            args: Prisma.LearningUpdateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateManyAndReturn: {
+            args: Prisma.LearningUpdateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$LearningPayload>[]
+          }
+          upsert: {
+            args: Prisma.LearningUpsertArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$LearningPayload>
+          }
+          aggregate: {
+            args: Prisma.LearningAggregateArgs<ExtArgs>
+            result: $Utils.Optional<AggregateLearning>
+          }
+          groupBy: {
+            args: Prisma.LearningGroupByArgs<ExtArgs>
+            result: $Utils.Optional<LearningGroupByOutputType>[]
+          }
+          count: {
+            args: Prisma.LearningCountArgs<ExtArgs>
+            result: $Utils.Optional<LearningCountAggregateOutputType> | number
+          }
+        }
+      }
+      ContentLearning: {
+        payload: Prisma.$ContentLearningPayload<ExtArgs>
+        fields: Prisma.ContentLearningFieldRefs
+        operations: {
+          findUnique: {
+            args: Prisma.ContentLearningFindUniqueArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ContentLearningPayload> | null
+          }
+          findUniqueOrThrow: {
+            args: Prisma.ContentLearningFindUniqueOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ContentLearningPayload>
+          }
+          findFirst: {
+            args: Prisma.ContentLearningFindFirstArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ContentLearningPayload> | null
+          }
+          findFirstOrThrow: {
+            args: Prisma.ContentLearningFindFirstOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ContentLearningPayload>
+          }
+          findMany: {
+            args: Prisma.ContentLearningFindManyArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ContentLearningPayload>[]
+          }
+          create: {
+            args: Prisma.ContentLearningCreateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ContentLearningPayload>
+          }
+          createMany: {
+            args: Prisma.ContentLearningCreateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          createManyAndReturn: {
+            args: Prisma.ContentLearningCreateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ContentLearningPayload>[]
+          }
+          delete: {
+            args: Prisma.ContentLearningDeleteArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ContentLearningPayload>
+          }
+          update: {
+            args: Prisma.ContentLearningUpdateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ContentLearningPayload>
+          }
+          deleteMany: {
+            args: Prisma.ContentLearningDeleteManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateMany: {
+            args: Prisma.ContentLearningUpdateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateManyAndReturn: {
+            args: Prisma.ContentLearningUpdateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ContentLearningPayload>[]
+          }
+          upsert: {
+            args: Prisma.ContentLearningUpsertArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ContentLearningPayload>
+          }
+          aggregate: {
+            args: Prisma.ContentLearningAggregateArgs<ExtArgs>
+            result: $Utils.Optional<AggregateContentLearning>
+          }
+          groupBy: {
+            args: Prisma.ContentLearningGroupByArgs<ExtArgs>
+            result: $Utils.Optional<ContentLearningGroupByOutputType>[]
+          }
+          count: {
+            args: Prisma.ContentLearningCountArgs<ExtArgs>
+            result: $Utils.Optional<ContentLearningCountAggregateOutputType> | number
+          }
+        }
+      }
     }
   } & {
     other: {
@@ -1473,6 +1653,8 @@ export namespace Prisma {
     workOvernight?: workOvernightOmit
     workStage?: workStageOmit
     fileUpload?: FileUploadOmit
+    learning?: LearningOmit
+    contentLearning?: ContentLearningOmit
   }
 
   /* Types for Logging */
@@ -1717,6 +1899,68 @@ export namespace Prisma {
    * WorkStageCountOutputType without action
    */
   export type WorkStageCountOutputTypeCountFilesArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: FileUploadWhereInput
+  }
+
+
+  /**
+   * Count Type LearningCountOutputType
+   */
+
+  export type LearningCountOutputType = {
+    content: number
+  }
+
+  export type LearningCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    content?: boolean | LearningCountOutputTypeCountContentArgs
+  }
+
+  // Custom InputTypes
+  /**
+   * LearningCountOutputType without action
+   */
+  export type LearningCountOutputTypeDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the LearningCountOutputType
+     */
+    select?: LearningCountOutputTypeSelect<ExtArgs> | null
+  }
+
+  /**
+   * LearningCountOutputType without action
+   */
+  export type LearningCountOutputTypeCountContentArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: ContentLearningWhereInput
+  }
+
+
+  /**
+   * Count Type ContentLearningCountOutputType
+   */
+
+  export type ContentLearningCountOutputType = {
+    files: number
+  }
+
+  export type ContentLearningCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    files?: boolean | ContentLearningCountOutputTypeCountFilesArgs
+  }
+
+  // Custom InputTypes
+  /**
+   * ContentLearningCountOutputType without action
+   */
+  export type ContentLearningCountOutputTypeDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ContentLearningCountOutputType
+     */
+    select?: ContentLearningCountOutputTypeSelect<ExtArgs> | null
+  }
+
+  /**
+   * ContentLearningCountOutputType without action
+   */
+  export type ContentLearningCountOutputTypeCountFilesArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     where?: FileUploadWhereInput
   }
 
@@ -9817,6 +10061,7 @@ export namespace Prisma {
     machineId: number | null
     workId: number | null
     stageId: number | null
+    contentLearningId: number | null
   }
 
   export type FileUploadSumAggregateOutputType = {
@@ -9826,6 +10071,7 @@ export namespace Prisma {
     machineId: number | null
     workId: number | null
     stageId: number | null
+    contentLearningId: number | null
   }
 
   export type FileUploadMinAggregateOutputType = {
@@ -9840,6 +10086,7 @@ export namespace Prisma {
     machineId: number | null
     workId: number | null
     stageId: number | null
+    contentLearningId: number | null
     createdAt: Date | null
     updatedAt: Date | null
   }
@@ -9856,6 +10103,7 @@ export namespace Prisma {
     machineId: number | null
     workId: number | null
     stageId: number | null
+    contentLearningId: number | null
     createdAt: Date | null
     updatedAt: Date | null
   }
@@ -9872,6 +10120,7 @@ export namespace Prisma {
     machineId: number
     workId: number
     stageId: number
+    contentLearningId: number
     createdAt: number
     updatedAt: number
     _all: number
@@ -9885,6 +10134,7 @@ export namespace Prisma {
     machineId?: true
     workId?: true
     stageId?: true
+    contentLearningId?: true
   }
 
   export type FileUploadSumAggregateInputType = {
@@ -9894,6 +10144,7 @@ export namespace Prisma {
     machineId?: true
     workId?: true
     stageId?: true
+    contentLearningId?: true
   }
 
   export type FileUploadMinAggregateInputType = {
@@ -9908,6 +10159,7 @@ export namespace Prisma {
     machineId?: true
     workId?: true
     stageId?: true
+    contentLearningId?: true
     createdAt?: true
     updatedAt?: true
   }
@@ -9924,6 +10176,7 @@ export namespace Prisma {
     machineId?: true
     workId?: true
     stageId?: true
+    contentLearningId?: true
     createdAt?: true
     updatedAt?: true
   }
@@ -9940,6 +10193,7 @@ export namespace Prisma {
     machineId?: true
     workId?: true
     stageId?: true
+    contentLearningId?: true
     createdAt?: true
     updatedAt?: true
     _all?: true
@@ -10043,6 +10297,7 @@ export namespace Prisma {
     machineId: number | null
     workId: number | null
     stageId: number | null
+    contentLearningId: number | null
     createdAt: Date
     updatedAt: Date
     _count: FileUploadCountAggregateOutputType | null
@@ -10078,12 +10333,14 @@ export namespace Prisma {
     machineId?: boolean
     workId?: boolean
     stageId?: boolean
+    contentLearningId?: boolean
     createdAt?: boolean
     updatedAt?: boolean
     tool?: boolean | FileUpload$toolArgs<ExtArgs>
     machine?: boolean | FileUpload$machineArgs<ExtArgs>
     work?: boolean | FileUpload$workArgs<ExtArgs>
     stage?: boolean | FileUpload$stageArgs<ExtArgs>
+    contentLearning?: boolean | FileUpload$contentLearningArgs<ExtArgs>
   }, ExtArgs["result"]["fileUpload"]>
 
   export type FileUploadSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
@@ -10098,12 +10355,14 @@ export namespace Prisma {
     machineId?: boolean
     workId?: boolean
     stageId?: boolean
+    contentLearningId?: boolean
     createdAt?: boolean
     updatedAt?: boolean
     tool?: boolean | FileUpload$toolArgs<ExtArgs>
     machine?: boolean | FileUpload$machineArgs<ExtArgs>
     work?: boolean | FileUpload$workArgs<ExtArgs>
     stage?: boolean | FileUpload$stageArgs<ExtArgs>
+    contentLearning?: boolean | FileUpload$contentLearningArgs<ExtArgs>
   }, ExtArgs["result"]["fileUpload"]>
 
   export type FileUploadSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
@@ -10118,12 +10377,14 @@ export namespace Prisma {
     machineId?: boolean
     workId?: boolean
     stageId?: boolean
+    contentLearningId?: boolean
     createdAt?: boolean
     updatedAt?: boolean
     tool?: boolean | FileUpload$toolArgs<ExtArgs>
     machine?: boolean | FileUpload$machineArgs<ExtArgs>
     work?: boolean | FileUpload$workArgs<ExtArgs>
     stage?: boolean | FileUpload$stageArgs<ExtArgs>
+    contentLearning?: boolean | FileUpload$contentLearningArgs<ExtArgs>
   }, ExtArgs["result"]["fileUpload"]>
 
   export type FileUploadSelectScalar = {
@@ -10138,28 +10399,32 @@ export namespace Prisma {
     machineId?: boolean
     workId?: boolean
     stageId?: boolean
+    contentLearningId?: boolean
     createdAt?: boolean
     updatedAt?: boolean
   }
 
-  export type FileUploadOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "filename" | "originalName" | "path" | "mimeType" | "size" | "type" | "toolId" | "machineId" | "workId" | "stageId" | "createdAt" | "updatedAt", ExtArgs["result"]["fileUpload"]>
+  export type FileUploadOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "filename" | "originalName" | "path" | "mimeType" | "size" | "type" | "toolId" | "machineId" | "workId" | "stageId" | "contentLearningId" | "createdAt" | "updatedAt", ExtArgs["result"]["fileUpload"]>
   export type FileUploadInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     tool?: boolean | FileUpload$toolArgs<ExtArgs>
     machine?: boolean | FileUpload$machineArgs<ExtArgs>
     work?: boolean | FileUpload$workArgs<ExtArgs>
     stage?: boolean | FileUpload$stageArgs<ExtArgs>
+    contentLearning?: boolean | FileUpload$contentLearningArgs<ExtArgs>
   }
   export type FileUploadIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     tool?: boolean | FileUpload$toolArgs<ExtArgs>
     machine?: boolean | FileUpload$machineArgs<ExtArgs>
     work?: boolean | FileUpload$workArgs<ExtArgs>
     stage?: boolean | FileUpload$stageArgs<ExtArgs>
+    contentLearning?: boolean | FileUpload$contentLearningArgs<ExtArgs>
   }
   export type FileUploadIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     tool?: boolean | FileUpload$toolArgs<ExtArgs>
     machine?: boolean | FileUpload$machineArgs<ExtArgs>
     work?: boolean | FileUpload$workArgs<ExtArgs>
     stage?: boolean | FileUpload$stageArgs<ExtArgs>
+    contentLearning?: boolean | FileUpload$contentLearningArgs<ExtArgs>
   }
 
   export type $FileUploadPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
@@ -10169,6 +10434,7 @@ export namespace Prisma {
       machine: Prisma.$machine_cncPayload<ExtArgs> | null
       work: Prisma.$workOvernightPayload<ExtArgs> | null
       stage: Prisma.$workStagePayload<ExtArgs> | null
+      contentLearning: Prisma.$ContentLearningPayload<ExtArgs> | null
     }
     scalars: $Extensions.GetPayloadResult<{
       id: number
@@ -10182,6 +10448,7 @@ export namespace Prisma {
       machineId: number | null
       workId: number | null
       stageId: number | null
+      contentLearningId: number | null
       createdAt: Date
       updatedAt: Date
     }, ExtArgs["result"]["fileUpload"]>
@@ -10582,6 +10849,7 @@ export namespace Prisma {
     machine<T extends FileUpload$machineArgs<ExtArgs> = {}>(args?: Subset<T, FileUpload$machineArgs<ExtArgs>>): Prisma__machine_cncClient<$Result.GetResult<Prisma.$machine_cncPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
     work<T extends FileUpload$workArgs<ExtArgs> = {}>(args?: Subset<T, FileUpload$workArgs<ExtArgs>>): Prisma__workOvernightClient<$Result.GetResult<Prisma.$workOvernightPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
     stage<T extends FileUpload$stageArgs<ExtArgs> = {}>(args?: Subset<T, FileUpload$stageArgs<ExtArgs>>): Prisma__workStageClient<$Result.GetResult<Prisma.$workStagePayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+    contentLearning<T extends FileUpload$contentLearningArgs<ExtArgs> = {}>(args?: Subset<T, FileUpload$contentLearningArgs<ExtArgs>>): Prisma__ContentLearningClient<$Result.GetResult<Prisma.$ContentLearningPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
      * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -10622,6 +10890,7 @@ export namespace Prisma {
     readonly machineId: FieldRef<"FileUpload", 'Int'>
     readonly workId: FieldRef<"FileUpload", 'Int'>
     readonly stageId: FieldRef<"FileUpload", 'Int'>
+    readonly contentLearningId: FieldRef<"FileUpload", 'Int'>
     readonly createdAt: FieldRef<"FileUpload", 'DateTime'>
     readonly updatedAt: FieldRef<"FileUpload", 'DateTime'>
   }
@@ -11096,6 +11365,25 @@ export namespace Prisma {
   }
 
   /**
+   * FileUpload.contentLearning
+   */
+  export type FileUpload$contentLearningArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ContentLearning
+     */
+    select?: ContentLearningSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the ContentLearning
+     */
+    omit?: ContentLearningOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ContentLearningInclude<ExtArgs> | null
+    where?: ContentLearningWhereInput
+  }
+
+  /**
    * FileUpload without action
    */
   export type FileUploadDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
@@ -11111,6 +11399,2223 @@ export namespace Prisma {
      * Choose, which related nodes to fetch as well
      */
     include?: FileUploadInclude<ExtArgs> | null
+  }
+
+
+  /**
+   * Model Learning
+   */
+
+  export type AggregateLearning = {
+    _count: LearningCountAggregateOutputType | null
+    _avg: LearningAvgAggregateOutputType | null
+    _sum: LearningSumAggregateOutputType | null
+    _min: LearningMinAggregateOutputType | null
+    _max: LearningMaxAggregateOutputType | null
+  }
+
+  export type LearningAvgAggregateOutputType = {
+    id: number | null
+  }
+
+  export type LearningSumAggregateOutputType = {
+    id: number | null
+  }
+
+  export type LearningMinAggregateOutputType = {
+    id: number | null
+    title: string | null
+    createdAt: Date | null
+    updatedAt: Date | null
+  }
+
+  export type LearningMaxAggregateOutputType = {
+    id: number | null
+    title: string | null
+    createdAt: Date | null
+    updatedAt: Date | null
+  }
+
+  export type LearningCountAggregateOutputType = {
+    id: number
+    title: number
+    createdAt: number
+    updatedAt: number
+    _all: number
+  }
+
+
+  export type LearningAvgAggregateInputType = {
+    id?: true
+  }
+
+  export type LearningSumAggregateInputType = {
+    id?: true
+  }
+
+  export type LearningMinAggregateInputType = {
+    id?: true
+    title?: true
+    createdAt?: true
+    updatedAt?: true
+  }
+
+  export type LearningMaxAggregateInputType = {
+    id?: true
+    title?: true
+    createdAt?: true
+    updatedAt?: true
+  }
+
+  export type LearningCountAggregateInputType = {
+    id?: true
+    title?: true
+    createdAt?: true
+    updatedAt?: true
+    _all?: true
+  }
+
+  export type LearningAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which Learning to aggregate.
+     */
+    where?: LearningWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Learnings to fetch.
+     */
+    orderBy?: LearningOrderByWithRelationInput | LearningOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: LearningWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Learnings from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Learnings.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned Learnings
+    **/
+    _count?: true | LearningCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to average
+    **/
+    _avg?: LearningAvgAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to sum
+    **/
+    _sum?: LearningSumAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: LearningMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: LearningMaxAggregateInputType
+  }
+
+  export type GetLearningAggregateType<T extends LearningAggregateArgs> = {
+        [P in keyof T & keyof AggregateLearning]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregateLearning[P]>
+      : GetScalarType<T[P], AggregateLearning[P]>
+  }
+
+
+
+
+  export type LearningGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: LearningWhereInput
+    orderBy?: LearningOrderByWithAggregationInput | LearningOrderByWithAggregationInput[]
+    by: LearningScalarFieldEnum[] | LearningScalarFieldEnum
+    having?: LearningScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: LearningCountAggregateInputType | true
+    _avg?: LearningAvgAggregateInputType
+    _sum?: LearningSumAggregateInputType
+    _min?: LearningMinAggregateInputType
+    _max?: LearningMaxAggregateInputType
+  }
+
+  export type LearningGroupByOutputType = {
+    id: number
+    title: string
+    createdAt: Date
+    updatedAt: Date
+    _count: LearningCountAggregateOutputType | null
+    _avg: LearningAvgAggregateOutputType | null
+    _sum: LearningSumAggregateOutputType | null
+    _min: LearningMinAggregateOutputType | null
+    _max: LearningMaxAggregateOutputType | null
+  }
+
+  type GetLearningGroupByPayload<T extends LearningGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<LearningGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof LearningGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], LearningGroupByOutputType[P]>
+            : GetScalarType<T[P], LearningGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type LearningSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    title?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+    content?: boolean | Learning$contentArgs<ExtArgs>
+    _count?: boolean | LearningCountOutputTypeDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["learning"]>
+
+  export type LearningSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    title?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+  }, ExtArgs["result"]["learning"]>
+
+  export type LearningSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    title?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+  }, ExtArgs["result"]["learning"]>
+
+  export type LearningSelectScalar = {
+    id?: boolean
+    title?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+  }
+
+  export type LearningOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "title" | "createdAt" | "updatedAt", ExtArgs["result"]["learning"]>
+  export type LearningInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    content?: boolean | Learning$contentArgs<ExtArgs>
+    _count?: boolean | LearningCountOutputTypeDefaultArgs<ExtArgs>
+  }
+  export type LearningIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {}
+  export type LearningIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {}
+
+  export type $LearningPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "Learning"
+    objects: {
+      content: Prisma.$ContentLearningPayload<ExtArgs>[]
+    }
+    scalars: $Extensions.GetPayloadResult<{
+      id: number
+      title: string
+      createdAt: Date
+      updatedAt: Date
+    }, ExtArgs["result"]["learning"]>
+    composites: {}
+  }
+
+  type LearningGetPayload<S extends boolean | null | undefined | LearningDefaultArgs> = $Result.GetResult<Prisma.$LearningPayload, S>
+
+  type LearningCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
+    Omit<LearningFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
+      select?: LearningCountAggregateInputType | true
+    }
+
+  export interface LearningDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['Learning'], meta: { name: 'Learning' } }
+    /**
+     * Find zero or one Learning that matches the filter.
+     * @param {LearningFindUniqueArgs} args - Arguments to find a Learning
+     * @example
+     * // Get one Learning
+     * const learning = await prisma.learning.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUnique<T extends LearningFindUniqueArgs>(args: SelectSubset<T, LearningFindUniqueArgs<ExtArgs>>): Prisma__LearningClient<$Result.GetResult<Prisma.$LearningPayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find one Learning that matches the filter or throw an error with `error.code='P2025'`
+     * if no matches were found.
+     * @param {LearningFindUniqueOrThrowArgs} args - Arguments to find a Learning
+     * @example
+     * // Get one Learning
+     * const learning = await prisma.learning.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUniqueOrThrow<T extends LearningFindUniqueOrThrowArgs>(args: SelectSubset<T, LearningFindUniqueOrThrowArgs<ExtArgs>>): Prisma__LearningClient<$Result.GetResult<Prisma.$LearningPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first Learning that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {LearningFindFirstArgs} args - Arguments to find a Learning
+     * @example
+     * // Get one Learning
+     * const learning = await prisma.learning.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirst<T extends LearningFindFirstArgs>(args?: SelectSubset<T, LearningFindFirstArgs<ExtArgs>>): Prisma__LearningClient<$Result.GetResult<Prisma.$LearningPayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first Learning that matches the filter or
+     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {LearningFindFirstOrThrowArgs} args - Arguments to find a Learning
+     * @example
+     * // Get one Learning
+     * const learning = await prisma.learning.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirstOrThrow<T extends LearningFindFirstOrThrowArgs>(args?: SelectSubset<T, LearningFindFirstOrThrowArgs<ExtArgs>>): Prisma__LearningClient<$Result.GetResult<Prisma.$LearningPayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find zero or more Learnings that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {LearningFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all Learnings
+     * const learnings = await prisma.learning.findMany()
+     * 
+     * // Get first 10 Learnings
+     * const learnings = await prisma.learning.findMany({ take: 10 })
+     * 
+     * // Only select the `id`
+     * const learningWithIdOnly = await prisma.learning.findMany({ select: { id: true } })
+     * 
+     */
+    findMany<T extends LearningFindManyArgs>(args?: SelectSubset<T, LearningFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$LearningPayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
+
+    /**
+     * Create a Learning.
+     * @param {LearningCreateArgs} args - Arguments to create a Learning.
+     * @example
+     * // Create one Learning
+     * const Learning = await prisma.learning.create({
+     *   data: {
+     *     // ... data to create a Learning
+     *   }
+     * })
+     * 
+     */
+    create<T extends LearningCreateArgs>(args: SelectSubset<T, LearningCreateArgs<ExtArgs>>): Prisma__LearningClient<$Result.GetResult<Prisma.$LearningPayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Create many Learnings.
+     * @param {LearningCreateManyArgs} args - Arguments to create many Learnings.
+     * @example
+     * // Create many Learnings
+     * const learning = await prisma.learning.createMany({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     *     
+     */
+    createMany<T extends LearningCreateManyArgs>(args?: SelectSubset<T, LearningCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create many Learnings and returns the data saved in the database.
+     * @param {LearningCreateManyAndReturnArgs} args - Arguments to create many Learnings.
+     * @example
+     * // Create many Learnings
+     * const learning = await prisma.learning.createManyAndReturn({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Create many Learnings and only return the `id`
+     * const learningWithIdOnly = await prisma.learning.createManyAndReturn({
+     *   select: { id: true },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    createManyAndReturn<T extends LearningCreateManyAndReturnArgs>(args?: SelectSubset<T, LearningCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$LearningPayload<ExtArgs>, T, "createManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Delete a Learning.
+     * @param {LearningDeleteArgs} args - Arguments to delete one Learning.
+     * @example
+     * // Delete one Learning
+     * const Learning = await prisma.learning.delete({
+     *   where: {
+     *     // ... filter to delete one Learning
+     *   }
+     * })
+     * 
+     */
+    delete<T extends LearningDeleteArgs>(args: SelectSubset<T, LearningDeleteArgs<ExtArgs>>): Prisma__LearningClient<$Result.GetResult<Prisma.$LearningPayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Update one Learning.
+     * @param {LearningUpdateArgs} args - Arguments to update one Learning.
+     * @example
+     * // Update one Learning
+     * const learning = await prisma.learning.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    update<T extends LearningUpdateArgs>(args: SelectSubset<T, LearningUpdateArgs<ExtArgs>>): Prisma__LearningClient<$Result.GetResult<Prisma.$LearningPayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Delete zero or more Learnings.
+     * @param {LearningDeleteManyArgs} args - Arguments to filter Learnings to delete.
+     * @example
+     * // Delete a few Learnings
+     * const { count } = await prisma.learning.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+     */
+    deleteMany<T extends LearningDeleteManyArgs>(args?: SelectSubset<T, LearningDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more Learnings.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {LearningUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many Learnings
+     * const learning = await prisma.learning.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    updateMany<T extends LearningUpdateManyArgs>(args: SelectSubset<T, LearningUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more Learnings and returns the data updated in the database.
+     * @param {LearningUpdateManyAndReturnArgs} args - Arguments to update many Learnings.
+     * @example
+     * // Update many Learnings
+     * const learning = await prisma.learning.updateManyAndReturn({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Update zero or more Learnings and only return the `id`
+     * const learningWithIdOnly = await prisma.learning.updateManyAndReturn({
+     *   select: { id: true },
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    updateManyAndReturn<T extends LearningUpdateManyAndReturnArgs>(args: SelectSubset<T, LearningUpdateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$LearningPayload<ExtArgs>, T, "updateManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Create or update one Learning.
+     * @param {LearningUpsertArgs} args - Arguments to update or create a Learning.
+     * @example
+     * // Update or create a Learning
+     * const learning = await prisma.learning.upsert({
+     *   create: {
+     *     // ... data to create a Learning
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the Learning we want to update
+     *   }
+     * })
+     */
+    upsert<T extends LearningUpsertArgs>(args: SelectSubset<T, LearningUpsertArgs<ExtArgs>>): Prisma__LearningClient<$Result.GetResult<Prisma.$LearningPayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+
+    /**
+     * Count the number of Learnings.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {LearningCountArgs} args - Arguments to filter Learnings to count.
+     * @example
+     * // Count the number of Learnings
+     * const count = await prisma.learning.count({
+     *   where: {
+     *     // ... the filter for the Learnings we want to count
+     *   }
+     * })
+    **/
+    count<T extends LearningCountArgs>(
+      args?: Subset<T, LearningCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], LearningCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a Learning.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {LearningAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends LearningAggregateArgs>(args: Subset<T, LearningAggregateArgs>): Prisma.PrismaPromise<GetLearningAggregateType<T>>
+
+    /**
+     * Group by Learning.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {LearningGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends LearningGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: LearningGroupByArgs['orderBy'] }
+        : { orderBy?: LearningGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, LearningGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetLearningGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+  /**
+   * Fields of the Learning model
+   */
+  readonly fields: LearningFieldRefs;
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for Learning.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export interface Prisma__LearningClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
+    readonly [Symbol.toStringTag]: "PrismaPromise"
+    content<T extends Learning$contentArgs<ExtArgs> = {}>(args?: Subset<T, Learning$contentArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$ContentLearningPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>
+  }
+
+
+
+
+  /**
+   * Fields of the Learning model
+   */
+  interface LearningFieldRefs {
+    readonly id: FieldRef<"Learning", 'Int'>
+    readonly title: FieldRef<"Learning", 'String'>
+    readonly createdAt: FieldRef<"Learning", 'DateTime'>
+    readonly updatedAt: FieldRef<"Learning", 'DateTime'>
+  }
+    
+
+  // Custom InputTypes
+  /**
+   * Learning findUnique
+   */
+  export type LearningFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Learning
+     */
+    select?: LearningSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Learning
+     */
+    omit?: LearningOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: LearningInclude<ExtArgs> | null
+    /**
+     * Filter, which Learning to fetch.
+     */
+    where: LearningWhereUniqueInput
+  }
+
+  /**
+   * Learning findUniqueOrThrow
+   */
+  export type LearningFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Learning
+     */
+    select?: LearningSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Learning
+     */
+    omit?: LearningOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: LearningInclude<ExtArgs> | null
+    /**
+     * Filter, which Learning to fetch.
+     */
+    where: LearningWhereUniqueInput
+  }
+
+  /**
+   * Learning findFirst
+   */
+  export type LearningFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Learning
+     */
+    select?: LearningSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Learning
+     */
+    omit?: LearningOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: LearningInclude<ExtArgs> | null
+    /**
+     * Filter, which Learning to fetch.
+     */
+    where?: LearningWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Learnings to fetch.
+     */
+    orderBy?: LearningOrderByWithRelationInput | LearningOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for Learnings.
+     */
+    cursor?: LearningWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Learnings from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Learnings.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of Learnings.
+     */
+    distinct?: LearningScalarFieldEnum | LearningScalarFieldEnum[]
+  }
+
+  /**
+   * Learning findFirstOrThrow
+   */
+  export type LearningFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Learning
+     */
+    select?: LearningSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Learning
+     */
+    omit?: LearningOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: LearningInclude<ExtArgs> | null
+    /**
+     * Filter, which Learning to fetch.
+     */
+    where?: LearningWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Learnings to fetch.
+     */
+    orderBy?: LearningOrderByWithRelationInput | LearningOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for Learnings.
+     */
+    cursor?: LearningWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Learnings from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Learnings.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of Learnings.
+     */
+    distinct?: LearningScalarFieldEnum | LearningScalarFieldEnum[]
+  }
+
+  /**
+   * Learning findMany
+   */
+  export type LearningFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Learning
+     */
+    select?: LearningSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Learning
+     */
+    omit?: LearningOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: LearningInclude<ExtArgs> | null
+    /**
+     * Filter, which Learnings to fetch.
+     */
+    where?: LearningWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Learnings to fetch.
+     */
+    orderBy?: LearningOrderByWithRelationInput | LearningOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing Learnings.
+     */
+    cursor?: LearningWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Learnings from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Learnings.
+     */
+    skip?: number
+    distinct?: LearningScalarFieldEnum | LearningScalarFieldEnum[]
+  }
+
+  /**
+   * Learning create
+   */
+  export type LearningCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Learning
+     */
+    select?: LearningSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Learning
+     */
+    omit?: LearningOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: LearningInclude<ExtArgs> | null
+    /**
+     * The data needed to create a Learning.
+     */
+    data: XOR<LearningCreateInput, LearningUncheckedCreateInput>
+  }
+
+  /**
+   * Learning createMany
+   */
+  export type LearningCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many Learnings.
+     */
+    data: LearningCreateManyInput | LearningCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * Learning createManyAndReturn
+   */
+  export type LearningCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Learning
+     */
+    select?: LearningSelectCreateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the Learning
+     */
+    omit?: LearningOmit<ExtArgs> | null
+    /**
+     * The data used to create many Learnings.
+     */
+    data: LearningCreateManyInput | LearningCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * Learning update
+   */
+  export type LearningUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Learning
+     */
+    select?: LearningSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Learning
+     */
+    omit?: LearningOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: LearningInclude<ExtArgs> | null
+    /**
+     * The data needed to update a Learning.
+     */
+    data: XOR<LearningUpdateInput, LearningUncheckedUpdateInput>
+    /**
+     * Choose, which Learning to update.
+     */
+    where: LearningWhereUniqueInput
+  }
+
+  /**
+   * Learning updateMany
+   */
+  export type LearningUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update Learnings.
+     */
+    data: XOR<LearningUpdateManyMutationInput, LearningUncheckedUpdateManyInput>
+    /**
+     * Filter which Learnings to update
+     */
+    where?: LearningWhereInput
+    /**
+     * Limit how many Learnings to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * Learning updateManyAndReturn
+   */
+  export type LearningUpdateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Learning
+     */
+    select?: LearningSelectUpdateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the Learning
+     */
+    omit?: LearningOmit<ExtArgs> | null
+    /**
+     * The data used to update Learnings.
+     */
+    data: XOR<LearningUpdateManyMutationInput, LearningUncheckedUpdateManyInput>
+    /**
+     * Filter which Learnings to update
+     */
+    where?: LearningWhereInput
+    /**
+     * Limit how many Learnings to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * Learning upsert
+   */
+  export type LearningUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Learning
+     */
+    select?: LearningSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Learning
+     */
+    omit?: LearningOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: LearningInclude<ExtArgs> | null
+    /**
+     * The filter to search for the Learning to update in case it exists.
+     */
+    where: LearningWhereUniqueInput
+    /**
+     * In case the Learning found by the `where` argument doesn't exist, create a new Learning with this data.
+     */
+    create: XOR<LearningCreateInput, LearningUncheckedCreateInput>
+    /**
+     * In case the Learning was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<LearningUpdateInput, LearningUncheckedUpdateInput>
+  }
+
+  /**
+   * Learning delete
+   */
+  export type LearningDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Learning
+     */
+    select?: LearningSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Learning
+     */
+    omit?: LearningOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: LearningInclude<ExtArgs> | null
+    /**
+     * Filter which Learning to delete.
+     */
+    where: LearningWhereUniqueInput
+  }
+
+  /**
+   * Learning deleteMany
+   */
+  export type LearningDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which Learnings to delete
+     */
+    where?: LearningWhereInput
+    /**
+     * Limit how many Learnings to delete.
+     */
+    limit?: number
+  }
+
+  /**
+   * Learning.content
+   */
+  export type Learning$contentArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ContentLearning
+     */
+    select?: ContentLearningSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the ContentLearning
+     */
+    omit?: ContentLearningOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ContentLearningInclude<ExtArgs> | null
+    where?: ContentLearningWhereInput
+    orderBy?: ContentLearningOrderByWithRelationInput | ContentLearningOrderByWithRelationInput[]
+    cursor?: ContentLearningWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: ContentLearningScalarFieldEnum | ContentLearningScalarFieldEnum[]
+  }
+
+  /**
+   * Learning without action
+   */
+  export type LearningDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Learning
+     */
+    select?: LearningSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Learning
+     */
+    omit?: LearningOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: LearningInclude<ExtArgs> | null
+  }
+
+
+  /**
+   * Model ContentLearning
+   */
+
+  export type AggregateContentLearning = {
+    _count: ContentLearningCountAggregateOutputType | null
+    _avg: ContentLearningAvgAggregateOutputType | null
+    _sum: ContentLearningSumAggregateOutputType | null
+    _min: ContentLearningMinAggregateOutputType | null
+    _max: ContentLearningMaxAggregateOutputType | null
+  }
+
+  export type ContentLearningAvgAggregateOutputType = {
+    id: number | null
+    learningId: number | null
+  }
+
+  export type ContentLearningSumAggregateOutputType = {
+    id: number | null
+    learningId: number | null
+  }
+
+  export type ContentLearningMinAggregateOutputType = {
+    id: number | null
+    description: string | null
+    learningId: number | null
+    createdAt: Date | null
+    updatedAt: Date | null
+  }
+
+  export type ContentLearningMaxAggregateOutputType = {
+    id: number | null
+    description: string | null
+    learningId: number | null
+    createdAt: Date | null
+    updatedAt: Date | null
+  }
+
+  export type ContentLearningCountAggregateOutputType = {
+    id: number
+    description: number
+    learningId: number
+    createdAt: number
+    updatedAt: number
+    _all: number
+  }
+
+
+  export type ContentLearningAvgAggregateInputType = {
+    id?: true
+    learningId?: true
+  }
+
+  export type ContentLearningSumAggregateInputType = {
+    id?: true
+    learningId?: true
+  }
+
+  export type ContentLearningMinAggregateInputType = {
+    id?: true
+    description?: true
+    learningId?: true
+    createdAt?: true
+    updatedAt?: true
+  }
+
+  export type ContentLearningMaxAggregateInputType = {
+    id?: true
+    description?: true
+    learningId?: true
+    createdAt?: true
+    updatedAt?: true
+  }
+
+  export type ContentLearningCountAggregateInputType = {
+    id?: true
+    description?: true
+    learningId?: true
+    createdAt?: true
+    updatedAt?: true
+    _all?: true
+  }
+
+  export type ContentLearningAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which ContentLearning to aggregate.
+     */
+    where?: ContentLearningWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of ContentLearnings to fetch.
+     */
+    orderBy?: ContentLearningOrderByWithRelationInput | ContentLearningOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: ContentLearningWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` ContentLearnings from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` ContentLearnings.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned ContentLearnings
+    **/
+    _count?: true | ContentLearningCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to average
+    **/
+    _avg?: ContentLearningAvgAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to sum
+    **/
+    _sum?: ContentLearningSumAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: ContentLearningMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: ContentLearningMaxAggregateInputType
+  }
+
+  export type GetContentLearningAggregateType<T extends ContentLearningAggregateArgs> = {
+        [P in keyof T & keyof AggregateContentLearning]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregateContentLearning[P]>
+      : GetScalarType<T[P], AggregateContentLearning[P]>
+  }
+
+
+
+
+  export type ContentLearningGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: ContentLearningWhereInput
+    orderBy?: ContentLearningOrderByWithAggregationInput | ContentLearningOrderByWithAggregationInput[]
+    by: ContentLearningScalarFieldEnum[] | ContentLearningScalarFieldEnum
+    having?: ContentLearningScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: ContentLearningCountAggregateInputType | true
+    _avg?: ContentLearningAvgAggregateInputType
+    _sum?: ContentLearningSumAggregateInputType
+    _min?: ContentLearningMinAggregateInputType
+    _max?: ContentLearningMaxAggregateInputType
+  }
+
+  export type ContentLearningGroupByOutputType = {
+    id: number
+    description: string
+    learningId: number
+    createdAt: Date
+    updatedAt: Date
+    _count: ContentLearningCountAggregateOutputType | null
+    _avg: ContentLearningAvgAggregateOutputType | null
+    _sum: ContentLearningSumAggregateOutputType | null
+    _min: ContentLearningMinAggregateOutputType | null
+    _max: ContentLearningMaxAggregateOutputType | null
+  }
+
+  type GetContentLearningGroupByPayload<T extends ContentLearningGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<ContentLearningGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof ContentLearningGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], ContentLearningGroupByOutputType[P]>
+            : GetScalarType<T[P], ContentLearningGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type ContentLearningSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    description?: boolean
+    learningId?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+    files?: boolean | ContentLearning$filesArgs<ExtArgs>
+    learning?: boolean | LearningDefaultArgs<ExtArgs>
+    _count?: boolean | ContentLearningCountOutputTypeDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["contentLearning"]>
+
+  export type ContentLearningSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    description?: boolean
+    learningId?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+    learning?: boolean | LearningDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["contentLearning"]>
+
+  export type ContentLearningSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    description?: boolean
+    learningId?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+    learning?: boolean | LearningDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["contentLearning"]>
+
+  export type ContentLearningSelectScalar = {
+    id?: boolean
+    description?: boolean
+    learningId?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+  }
+
+  export type ContentLearningOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "description" | "learningId" | "createdAt" | "updatedAt", ExtArgs["result"]["contentLearning"]>
+  export type ContentLearningInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    files?: boolean | ContentLearning$filesArgs<ExtArgs>
+    learning?: boolean | LearningDefaultArgs<ExtArgs>
+    _count?: boolean | ContentLearningCountOutputTypeDefaultArgs<ExtArgs>
+  }
+  export type ContentLearningIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    learning?: boolean | LearningDefaultArgs<ExtArgs>
+  }
+  export type ContentLearningIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    learning?: boolean | LearningDefaultArgs<ExtArgs>
+  }
+
+  export type $ContentLearningPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "ContentLearning"
+    objects: {
+      files: Prisma.$FileUploadPayload<ExtArgs>[]
+      learning: Prisma.$LearningPayload<ExtArgs>
+    }
+    scalars: $Extensions.GetPayloadResult<{
+      id: number
+      description: string
+      learningId: number
+      createdAt: Date
+      updatedAt: Date
+    }, ExtArgs["result"]["contentLearning"]>
+    composites: {}
+  }
+
+  type ContentLearningGetPayload<S extends boolean | null | undefined | ContentLearningDefaultArgs> = $Result.GetResult<Prisma.$ContentLearningPayload, S>
+
+  type ContentLearningCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
+    Omit<ContentLearningFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
+      select?: ContentLearningCountAggregateInputType | true
+    }
+
+  export interface ContentLearningDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['ContentLearning'], meta: { name: 'ContentLearning' } }
+    /**
+     * Find zero or one ContentLearning that matches the filter.
+     * @param {ContentLearningFindUniqueArgs} args - Arguments to find a ContentLearning
+     * @example
+     * // Get one ContentLearning
+     * const contentLearning = await prisma.contentLearning.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUnique<T extends ContentLearningFindUniqueArgs>(args: SelectSubset<T, ContentLearningFindUniqueArgs<ExtArgs>>): Prisma__ContentLearningClient<$Result.GetResult<Prisma.$ContentLearningPayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find one ContentLearning that matches the filter or throw an error with `error.code='P2025'`
+     * if no matches were found.
+     * @param {ContentLearningFindUniqueOrThrowArgs} args - Arguments to find a ContentLearning
+     * @example
+     * // Get one ContentLearning
+     * const contentLearning = await prisma.contentLearning.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUniqueOrThrow<T extends ContentLearningFindUniqueOrThrowArgs>(args: SelectSubset<T, ContentLearningFindUniqueOrThrowArgs<ExtArgs>>): Prisma__ContentLearningClient<$Result.GetResult<Prisma.$ContentLearningPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first ContentLearning that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {ContentLearningFindFirstArgs} args - Arguments to find a ContentLearning
+     * @example
+     * // Get one ContentLearning
+     * const contentLearning = await prisma.contentLearning.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirst<T extends ContentLearningFindFirstArgs>(args?: SelectSubset<T, ContentLearningFindFirstArgs<ExtArgs>>): Prisma__ContentLearningClient<$Result.GetResult<Prisma.$ContentLearningPayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first ContentLearning that matches the filter or
+     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {ContentLearningFindFirstOrThrowArgs} args - Arguments to find a ContentLearning
+     * @example
+     * // Get one ContentLearning
+     * const contentLearning = await prisma.contentLearning.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirstOrThrow<T extends ContentLearningFindFirstOrThrowArgs>(args?: SelectSubset<T, ContentLearningFindFirstOrThrowArgs<ExtArgs>>): Prisma__ContentLearningClient<$Result.GetResult<Prisma.$ContentLearningPayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find zero or more ContentLearnings that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {ContentLearningFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all ContentLearnings
+     * const contentLearnings = await prisma.contentLearning.findMany()
+     * 
+     * // Get first 10 ContentLearnings
+     * const contentLearnings = await prisma.contentLearning.findMany({ take: 10 })
+     * 
+     * // Only select the `id`
+     * const contentLearningWithIdOnly = await prisma.contentLearning.findMany({ select: { id: true } })
+     * 
+     */
+    findMany<T extends ContentLearningFindManyArgs>(args?: SelectSubset<T, ContentLearningFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$ContentLearningPayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
+
+    /**
+     * Create a ContentLearning.
+     * @param {ContentLearningCreateArgs} args - Arguments to create a ContentLearning.
+     * @example
+     * // Create one ContentLearning
+     * const ContentLearning = await prisma.contentLearning.create({
+     *   data: {
+     *     // ... data to create a ContentLearning
+     *   }
+     * })
+     * 
+     */
+    create<T extends ContentLearningCreateArgs>(args: SelectSubset<T, ContentLearningCreateArgs<ExtArgs>>): Prisma__ContentLearningClient<$Result.GetResult<Prisma.$ContentLearningPayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Create many ContentLearnings.
+     * @param {ContentLearningCreateManyArgs} args - Arguments to create many ContentLearnings.
+     * @example
+     * // Create many ContentLearnings
+     * const contentLearning = await prisma.contentLearning.createMany({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     *     
+     */
+    createMany<T extends ContentLearningCreateManyArgs>(args?: SelectSubset<T, ContentLearningCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create many ContentLearnings and returns the data saved in the database.
+     * @param {ContentLearningCreateManyAndReturnArgs} args - Arguments to create many ContentLearnings.
+     * @example
+     * // Create many ContentLearnings
+     * const contentLearning = await prisma.contentLearning.createManyAndReturn({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Create many ContentLearnings and only return the `id`
+     * const contentLearningWithIdOnly = await prisma.contentLearning.createManyAndReturn({
+     *   select: { id: true },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    createManyAndReturn<T extends ContentLearningCreateManyAndReturnArgs>(args?: SelectSubset<T, ContentLearningCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$ContentLearningPayload<ExtArgs>, T, "createManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Delete a ContentLearning.
+     * @param {ContentLearningDeleteArgs} args - Arguments to delete one ContentLearning.
+     * @example
+     * // Delete one ContentLearning
+     * const ContentLearning = await prisma.contentLearning.delete({
+     *   where: {
+     *     // ... filter to delete one ContentLearning
+     *   }
+     * })
+     * 
+     */
+    delete<T extends ContentLearningDeleteArgs>(args: SelectSubset<T, ContentLearningDeleteArgs<ExtArgs>>): Prisma__ContentLearningClient<$Result.GetResult<Prisma.$ContentLearningPayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Update one ContentLearning.
+     * @param {ContentLearningUpdateArgs} args - Arguments to update one ContentLearning.
+     * @example
+     * // Update one ContentLearning
+     * const contentLearning = await prisma.contentLearning.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    update<T extends ContentLearningUpdateArgs>(args: SelectSubset<T, ContentLearningUpdateArgs<ExtArgs>>): Prisma__ContentLearningClient<$Result.GetResult<Prisma.$ContentLearningPayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Delete zero or more ContentLearnings.
+     * @param {ContentLearningDeleteManyArgs} args - Arguments to filter ContentLearnings to delete.
+     * @example
+     * // Delete a few ContentLearnings
+     * const { count } = await prisma.contentLearning.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+     */
+    deleteMany<T extends ContentLearningDeleteManyArgs>(args?: SelectSubset<T, ContentLearningDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more ContentLearnings.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {ContentLearningUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many ContentLearnings
+     * const contentLearning = await prisma.contentLearning.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    updateMany<T extends ContentLearningUpdateManyArgs>(args: SelectSubset<T, ContentLearningUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more ContentLearnings and returns the data updated in the database.
+     * @param {ContentLearningUpdateManyAndReturnArgs} args - Arguments to update many ContentLearnings.
+     * @example
+     * // Update many ContentLearnings
+     * const contentLearning = await prisma.contentLearning.updateManyAndReturn({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Update zero or more ContentLearnings and only return the `id`
+     * const contentLearningWithIdOnly = await prisma.contentLearning.updateManyAndReturn({
+     *   select: { id: true },
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    updateManyAndReturn<T extends ContentLearningUpdateManyAndReturnArgs>(args: SelectSubset<T, ContentLearningUpdateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$ContentLearningPayload<ExtArgs>, T, "updateManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Create or update one ContentLearning.
+     * @param {ContentLearningUpsertArgs} args - Arguments to update or create a ContentLearning.
+     * @example
+     * // Update or create a ContentLearning
+     * const contentLearning = await prisma.contentLearning.upsert({
+     *   create: {
+     *     // ... data to create a ContentLearning
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the ContentLearning we want to update
+     *   }
+     * })
+     */
+    upsert<T extends ContentLearningUpsertArgs>(args: SelectSubset<T, ContentLearningUpsertArgs<ExtArgs>>): Prisma__ContentLearningClient<$Result.GetResult<Prisma.$ContentLearningPayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+
+    /**
+     * Count the number of ContentLearnings.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {ContentLearningCountArgs} args - Arguments to filter ContentLearnings to count.
+     * @example
+     * // Count the number of ContentLearnings
+     * const count = await prisma.contentLearning.count({
+     *   where: {
+     *     // ... the filter for the ContentLearnings we want to count
+     *   }
+     * })
+    **/
+    count<T extends ContentLearningCountArgs>(
+      args?: Subset<T, ContentLearningCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], ContentLearningCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a ContentLearning.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {ContentLearningAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends ContentLearningAggregateArgs>(args: Subset<T, ContentLearningAggregateArgs>): Prisma.PrismaPromise<GetContentLearningAggregateType<T>>
+
+    /**
+     * Group by ContentLearning.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {ContentLearningGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends ContentLearningGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: ContentLearningGroupByArgs['orderBy'] }
+        : { orderBy?: ContentLearningGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, ContentLearningGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetContentLearningGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+  /**
+   * Fields of the ContentLearning model
+   */
+  readonly fields: ContentLearningFieldRefs;
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for ContentLearning.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export interface Prisma__ContentLearningClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
+    readonly [Symbol.toStringTag]: "PrismaPromise"
+    files<T extends ContentLearning$filesArgs<ExtArgs> = {}>(args?: Subset<T, ContentLearning$filesArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$FileUploadPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    learning<T extends LearningDefaultArgs<ExtArgs> = {}>(args?: Subset<T, LearningDefaultArgs<ExtArgs>>): Prisma__LearningClient<$Result.GetResult<Prisma.$LearningPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>
+  }
+
+
+
+
+  /**
+   * Fields of the ContentLearning model
+   */
+  interface ContentLearningFieldRefs {
+    readonly id: FieldRef<"ContentLearning", 'Int'>
+    readonly description: FieldRef<"ContentLearning", 'String'>
+    readonly learningId: FieldRef<"ContentLearning", 'Int'>
+    readonly createdAt: FieldRef<"ContentLearning", 'DateTime'>
+    readonly updatedAt: FieldRef<"ContentLearning", 'DateTime'>
+  }
+    
+
+  // Custom InputTypes
+  /**
+   * ContentLearning findUnique
+   */
+  export type ContentLearningFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ContentLearning
+     */
+    select?: ContentLearningSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the ContentLearning
+     */
+    omit?: ContentLearningOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ContentLearningInclude<ExtArgs> | null
+    /**
+     * Filter, which ContentLearning to fetch.
+     */
+    where: ContentLearningWhereUniqueInput
+  }
+
+  /**
+   * ContentLearning findUniqueOrThrow
+   */
+  export type ContentLearningFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ContentLearning
+     */
+    select?: ContentLearningSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the ContentLearning
+     */
+    omit?: ContentLearningOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ContentLearningInclude<ExtArgs> | null
+    /**
+     * Filter, which ContentLearning to fetch.
+     */
+    where: ContentLearningWhereUniqueInput
+  }
+
+  /**
+   * ContentLearning findFirst
+   */
+  export type ContentLearningFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ContentLearning
+     */
+    select?: ContentLearningSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the ContentLearning
+     */
+    omit?: ContentLearningOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ContentLearningInclude<ExtArgs> | null
+    /**
+     * Filter, which ContentLearning to fetch.
+     */
+    where?: ContentLearningWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of ContentLearnings to fetch.
+     */
+    orderBy?: ContentLearningOrderByWithRelationInput | ContentLearningOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for ContentLearnings.
+     */
+    cursor?: ContentLearningWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` ContentLearnings from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` ContentLearnings.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of ContentLearnings.
+     */
+    distinct?: ContentLearningScalarFieldEnum | ContentLearningScalarFieldEnum[]
+  }
+
+  /**
+   * ContentLearning findFirstOrThrow
+   */
+  export type ContentLearningFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ContentLearning
+     */
+    select?: ContentLearningSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the ContentLearning
+     */
+    omit?: ContentLearningOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ContentLearningInclude<ExtArgs> | null
+    /**
+     * Filter, which ContentLearning to fetch.
+     */
+    where?: ContentLearningWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of ContentLearnings to fetch.
+     */
+    orderBy?: ContentLearningOrderByWithRelationInput | ContentLearningOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for ContentLearnings.
+     */
+    cursor?: ContentLearningWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` ContentLearnings from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` ContentLearnings.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of ContentLearnings.
+     */
+    distinct?: ContentLearningScalarFieldEnum | ContentLearningScalarFieldEnum[]
+  }
+
+  /**
+   * ContentLearning findMany
+   */
+  export type ContentLearningFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ContentLearning
+     */
+    select?: ContentLearningSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the ContentLearning
+     */
+    omit?: ContentLearningOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ContentLearningInclude<ExtArgs> | null
+    /**
+     * Filter, which ContentLearnings to fetch.
+     */
+    where?: ContentLearningWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of ContentLearnings to fetch.
+     */
+    orderBy?: ContentLearningOrderByWithRelationInput | ContentLearningOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing ContentLearnings.
+     */
+    cursor?: ContentLearningWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` ContentLearnings from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` ContentLearnings.
+     */
+    skip?: number
+    distinct?: ContentLearningScalarFieldEnum | ContentLearningScalarFieldEnum[]
+  }
+
+  /**
+   * ContentLearning create
+   */
+  export type ContentLearningCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ContentLearning
+     */
+    select?: ContentLearningSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the ContentLearning
+     */
+    omit?: ContentLearningOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ContentLearningInclude<ExtArgs> | null
+    /**
+     * The data needed to create a ContentLearning.
+     */
+    data: XOR<ContentLearningCreateInput, ContentLearningUncheckedCreateInput>
+  }
+
+  /**
+   * ContentLearning createMany
+   */
+  export type ContentLearningCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many ContentLearnings.
+     */
+    data: ContentLearningCreateManyInput | ContentLearningCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * ContentLearning createManyAndReturn
+   */
+  export type ContentLearningCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ContentLearning
+     */
+    select?: ContentLearningSelectCreateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the ContentLearning
+     */
+    omit?: ContentLearningOmit<ExtArgs> | null
+    /**
+     * The data used to create many ContentLearnings.
+     */
+    data: ContentLearningCreateManyInput | ContentLearningCreateManyInput[]
+    skipDuplicates?: boolean
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ContentLearningIncludeCreateManyAndReturn<ExtArgs> | null
+  }
+
+  /**
+   * ContentLearning update
+   */
+  export type ContentLearningUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ContentLearning
+     */
+    select?: ContentLearningSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the ContentLearning
+     */
+    omit?: ContentLearningOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ContentLearningInclude<ExtArgs> | null
+    /**
+     * The data needed to update a ContentLearning.
+     */
+    data: XOR<ContentLearningUpdateInput, ContentLearningUncheckedUpdateInput>
+    /**
+     * Choose, which ContentLearning to update.
+     */
+    where: ContentLearningWhereUniqueInput
+  }
+
+  /**
+   * ContentLearning updateMany
+   */
+  export type ContentLearningUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update ContentLearnings.
+     */
+    data: XOR<ContentLearningUpdateManyMutationInput, ContentLearningUncheckedUpdateManyInput>
+    /**
+     * Filter which ContentLearnings to update
+     */
+    where?: ContentLearningWhereInput
+    /**
+     * Limit how many ContentLearnings to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * ContentLearning updateManyAndReturn
+   */
+  export type ContentLearningUpdateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ContentLearning
+     */
+    select?: ContentLearningSelectUpdateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the ContentLearning
+     */
+    omit?: ContentLearningOmit<ExtArgs> | null
+    /**
+     * The data used to update ContentLearnings.
+     */
+    data: XOR<ContentLearningUpdateManyMutationInput, ContentLearningUncheckedUpdateManyInput>
+    /**
+     * Filter which ContentLearnings to update
+     */
+    where?: ContentLearningWhereInput
+    /**
+     * Limit how many ContentLearnings to update.
+     */
+    limit?: number
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ContentLearningIncludeUpdateManyAndReturn<ExtArgs> | null
+  }
+
+  /**
+   * ContentLearning upsert
+   */
+  export type ContentLearningUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ContentLearning
+     */
+    select?: ContentLearningSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the ContentLearning
+     */
+    omit?: ContentLearningOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ContentLearningInclude<ExtArgs> | null
+    /**
+     * The filter to search for the ContentLearning to update in case it exists.
+     */
+    where: ContentLearningWhereUniqueInput
+    /**
+     * In case the ContentLearning found by the `where` argument doesn't exist, create a new ContentLearning with this data.
+     */
+    create: XOR<ContentLearningCreateInput, ContentLearningUncheckedCreateInput>
+    /**
+     * In case the ContentLearning was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<ContentLearningUpdateInput, ContentLearningUncheckedUpdateInput>
+  }
+
+  /**
+   * ContentLearning delete
+   */
+  export type ContentLearningDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ContentLearning
+     */
+    select?: ContentLearningSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the ContentLearning
+     */
+    omit?: ContentLearningOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ContentLearningInclude<ExtArgs> | null
+    /**
+     * Filter which ContentLearning to delete.
+     */
+    where: ContentLearningWhereUniqueInput
+  }
+
+  /**
+   * ContentLearning deleteMany
+   */
+  export type ContentLearningDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which ContentLearnings to delete
+     */
+    where?: ContentLearningWhereInput
+    /**
+     * Limit how many ContentLearnings to delete.
+     */
+    limit?: number
+  }
+
+  /**
+   * ContentLearning.files
+   */
+  export type ContentLearning$filesArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the FileUpload
+     */
+    select?: FileUploadSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the FileUpload
+     */
+    omit?: FileUploadOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: FileUploadInclude<ExtArgs> | null
+    where?: FileUploadWhereInput
+    orderBy?: FileUploadOrderByWithRelationInput | FileUploadOrderByWithRelationInput[]
+    cursor?: FileUploadWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: FileUploadScalarFieldEnum | FileUploadScalarFieldEnum[]
+  }
+
+  /**
+   * ContentLearning without action
+   */
+  export type ContentLearningDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ContentLearning
+     */
+    select?: ContentLearningSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the ContentLearning
+     */
+    omit?: ContentLearningOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ContentLearningInclude<ExtArgs> | null
   }
 
 
@@ -11241,11 +13746,33 @@ export namespace Prisma {
     machineId: 'machineId',
     workId: 'workId',
     stageId: 'stageId',
+    contentLearningId: 'contentLearningId',
     createdAt: 'createdAt',
     updatedAt: 'updatedAt'
   };
 
   export type FileUploadScalarFieldEnum = (typeof FileUploadScalarFieldEnum)[keyof typeof FileUploadScalarFieldEnum]
+
+
+  export const LearningScalarFieldEnum: {
+    id: 'id',
+    title: 'title',
+    createdAt: 'createdAt',
+    updatedAt: 'updatedAt'
+  };
+
+  export type LearningScalarFieldEnum = (typeof LearningScalarFieldEnum)[keyof typeof LearningScalarFieldEnum]
+
+
+  export const ContentLearningScalarFieldEnum: {
+    id: 'id',
+    description: 'description',
+    learningId: 'learningId',
+    createdAt: 'createdAt',
+    updatedAt: 'updatedAt'
+  };
+
+  export type ContentLearningScalarFieldEnum = (typeof ContentLearningScalarFieldEnum)[keyof typeof ContentLearningScalarFieldEnum]
 
 
   export const SortOrder: {
@@ -11943,12 +14470,14 @@ export namespace Prisma {
     machineId?: IntNullableFilter<"FileUpload"> | number | null
     workId?: IntNullableFilter<"FileUpload"> | number | null
     stageId?: IntNullableFilter<"FileUpload"> | number | null
+    contentLearningId?: IntNullableFilter<"FileUpload"> | number | null
     createdAt?: DateTimeFilter<"FileUpload"> | Date | string
     updatedAt?: DateTimeFilter<"FileUpload"> | Date | string
     tool?: XOR<ToolsNullableScalarRelationFilter, toolsWhereInput> | null
     machine?: XOR<Machine_cncNullableScalarRelationFilter, machine_cncWhereInput> | null
     work?: XOR<WorkOvernightNullableScalarRelationFilter, workOvernightWhereInput> | null
     stage?: XOR<WorkStageNullableScalarRelationFilter, workStageWhereInput> | null
+    contentLearning?: XOR<ContentLearningNullableScalarRelationFilter, ContentLearningWhereInput> | null
   }
 
   export type FileUploadOrderByWithRelationInput = {
@@ -11963,12 +14492,14 @@ export namespace Prisma {
     machineId?: SortOrderInput | SortOrder
     workId?: SortOrderInput | SortOrder
     stageId?: SortOrderInput | SortOrder
+    contentLearningId?: SortOrderInput | SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
     tool?: toolsOrderByWithRelationInput
     machine?: machine_cncOrderByWithRelationInput
     work?: workOvernightOrderByWithRelationInput
     stage?: workStageOrderByWithRelationInput
+    contentLearning?: ContentLearningOrderByWithRelationInput
   }
 
   export type FileUploadWhereUniqueInput = Prisma.AtLeast<{
@@ -11986,12 +14517,14 @@ export namespace Prisma {
     machineId?: IntNullableFilter<"FileUpload"> | number | null
     workId?: IntNullableFilter<"FileUpload"> | number | null
     stageId?: IntNullableFilter<"FileUpload"> | number | null
+    contentLearningId?: IntNullableFilter<"FileUpload"> | number | null
     createdAt?: DateTimeFilter<"FileUpload"> | Date | string
     updatedAt?: DateTimeFilter<"FileUpload"> | Date | string
     tool?: XOR<ToolsNullableScalarRelationFilter, toolsWhereInput> | null
     machine?: XOR<Machine_cncNullableScalarRelationFilter, machine_cncWhereInput> | null
     work?: XOR<WorkOvernightNullableScalarRelationFilter, workOvernightWhereInput> | null
     stage?: XOR<WorkStageNullableScalarRelationFilter, workStageWhereInput> | null
+    contentLearning?: XOR<ContentLearningNullableScalarRelationFilter, ContentLearningWhereInput> | null
   }, "id">
 
   export type FileUploadOrderByWithAggregationInput = {
@@ -12006,6 +14539,7 @@ export namespace Prisma {
     machineId?: SortOrderInput | SortOrder
     workId?: SortOrderInput | SortOrder
     stageId?: SortOrderInput | SortOrder
+    contentLearningId?: SortOrderInput | SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
     _count?: FileUploadCountOrderByAggregateInput
@@ -12030,8 +14564,121 @@ export namespace Prisma {
     machineId?: IntNullableWithAggregatesFilter<"FileUpload"> | number | null
     workId?: IntNullableWithAggregatesFilter<"FileUpload"> | number | null
     stageId?: IntNullableWithAggregatesFilter<"FileUpload"> | number | null
+    contentLearningId?: IntNullableWithAggregatesFilter<"FileUpload"> | number | null
     createdAt?: DateTimeWithAggregatesFilter<"FileUpload"> | Date | string
     updatedAt?: DateTimeWithAggregatesFilter<"FileUpload"> | Date | string
+  }
+
+  export type LearningWhereInput = {
+    AND?: LearningWhereInput | LearningWhereInput[]
+    OR?: LearningWhereInput[]
+    NOT?: LearningWhereInput | LearningWhereInput[]
+    id?: IntFilter<"Learning"> | number
+    title?: StringFilter<"Learning"> | string
+    createdAt?: DateTimeFilter<"Learning"> | Date | string
+    updatedAt?: DateTimeFilter<"Learning"> | Date | string
+    content?: ContentLearningListRelationFilter
+  }
+
+  export type LearningOrderByWithRelationInput = {
+    id?: SortOrder
+    title?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+    content?: ContentLearningOrderByRelationAggregateInput
+  }
+
+  export type LearningWhereUniqueInput = Prisma.AtLeast<{
+    id?: number
+    AND?: LearningWhereInput | LearningWhereInput[]
+    OR?: LearningWhereInput[]
+    NOT?: LearningWhereInput | LearningWhereInput[]
+    title?: StringFilter<"Learning"> | string
+    createdAt?: DateTimeFilter<"Learning"> | Date | string
+    updatedAt?: DateTimeFilter<"Learning"> | Date | string
+    content?: ContentLearningListRelationFilter
+  }, "id">
+
+  export type LearningOrderByWithAggregationInput = {
+    id?: SortOrder
+    title?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+    _count?: LearningCountOrderByAggregateInput
+    _avg?: LearningAvgOrderByAggregateInput
+    _max?: LearningMaxOrderByAggregateInput
+    _min?: LearningMinOrderByAggregateInput
+    _sum?: LearningSumOrderByAggregateInput
+  }
+
+  export type LearningScalarWhereWithAggregatesInput = {
+    AND?: LearningScalarWhereWithAggregatesInput | LearningScalarWhereWithAggregatesInput[]
+    OR?: LearningScalarWhereWithAggregatesInput[]
+    NOT?: LearningScalarWhereWithAggregatesInput | LearningScalarWhereWithAggregatesInput[]
+    id?: IntWithAggregatesFilter<"Learning"> | number
+    title?: StringWithAggregatesFilter<"Learning"> | string
+    createdAt?: DateTimeWithAggregatesFilter<"Learning"> | Date | string
+    updatedAt?: DateTimeWithAggregatesFilter<"Learning"> | Date | string
+  }
+
+  export type ContentLearningWhereInput = {
+    AND?: ContentLearningWhereInput | ContentLearningWhereInput[]
+    OR?: ContentLearningWhereInput[]
+    NOT?: ContentLearningWhereInput | ContentLearningWhereInput[]
+    id?: IntFilter<"ContentLearning"> | number
+    description?: StringFilter<"ContentLearning"> | string
+    learningId?: IntFilter<"ContentLearning"> | number
+    createdAt?: DateTimeFilter<"ContentLearning"> | Date | string
+    updatedAt?: DateTimeFilter<"ContentLearning"> | Date | string
+    files?: FileUploadListRelationFilter
+    learning?: XOR<LearningScalarRelationFilter, LearningWhereInput>
+  }
+
+  export type ContentLearningOrderByWithRelationInput = {
+    id?: SortOrder
+    description?: SortOrder
+    learningId?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+    files?: FileUploadOrderByRelationAggregateInput
+    learning?: LearningOrderByWithRelationInput
+  }
+
+  export type ContentLearningWhereUniqueInput = Prisma.AtLeast<{
+    id?: number
+    AND?: ContentLearningWhereInput | ContentLearningWhereInput[]
+    OR?: ContentLearningWhereInput[]
+    NOT?: ContentLearningWhereInput | ContentLearningWhereInput[]
+    description?: StringFilter<"ContentLearning"> | string
+    learningId?: IntFilter<"ContentLearning"> | number
+    createdAt?: DateTimeFilter<"ContentLearning"> | Date | string
+    updatedAt?: DateTimeFilter<"ContentLearning"> | Date | string
+    files?: FileUploadListRelationFilter
+    learning?: XOR<LearningScalarRelationFilter, LearningWhereInput>
+  }, "id">
+
+  export type ContentLearningOrderByWithAggregationInput = {
+    id?: SortOrder
+    description?: SortOrder
+    learningId?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+    _count?: ContentLearningCountOrderByAggregateInput
+    _avg?: ContentLearningAvgOrderByAggregateInput
+    _max?: ContentLearningMaxOrderByAggregateInput
+    _min?: ContentLearningMinOrderByAggregateInput
+    _sum?: ContentLearningSumOrderByAggregateInput
+  }
+
+  export type ContentLearningScalarWhereWithAggregatesInput = {
+    AND?: ContentLearningScalarWhereWithAggregatesInput | ContentLearningScalarWhereWithAggregatesInput[]
+    OR?: ContentLearningScalarWhereWithAggregatesInput[]
+    NOT?: ContentLearningScalarWhereWithAggregatesInput | ContentLearningScalarWhereWithAggregatesInput[]
+    id?: IntWithAggregatesFilter<"ContentLearning"> | number
+    description?: StringWithAggregatesFilter<"ContentLearning"> | string
+    learningId?: IntWithAggregatesFilter<"ContentLearning"> | number
+    createdAt?: DateTimeWithAggregatesFilter<"ContentLearning"> | Date | string
+    updatedAt?: DateTimeWithAggregatesFilter<"ContentLearning"> | Date | string
   }
 
   export type UserCreateInput = {
@@ -12611,6 +15258,7 @@ export namespace Prisma {
     machine?: machine_cncCreateNestedOneWithoutFilesInput
     work?: workOvernightCreateNestedOneWithoutFilesInput
     stage?: workStageCreateNestedOneWithoutFilesInput
+    contentLearning?: ContentLearningCreateNestedOneWithoutFilesInput
   }
 
   export type FileUploadUncheckedCreateInput = {
@@ -12625,6 +15273,7 @@ export namespace Prisma {
     machineId?: number | null
     workId?: number | null
     stageId?: number | null
+    contentLearningId?: number | null
     createdAt?: Date | string
     updatedAt?: Date | string
   }
@@ -12642,6 +15291,7 @@ export namespace Prisma {
     machine?: machine_cncUpdateOneWithoutFilesNestedInput
     work?: workOvernightUpdateOneWithoutFilesNestedInput
     stage?: workStageUpdateOneWithoutFilesNestedInput
+    contentLearning?: ContentLearningUpdateOneWithoutFilesNestedInput
   }
 
   export type FileUploadUncheckedUpdateInput = {
@@ -12656,6 +15306,7 @@ export namespace Prisma {
     machineId?: NullableIntFieldUpdateOperationsInput | number | null
     workId?: NullableIntFieldUpdateOperationsInput | number | null
     stageId?: NullableIntFieldUpdateOperationsInput | number | null
+    contentLearningId?: NullableIntFieldUpdateOperationsInput | number | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
@@ -12672,6 +15323,7 @@ export namespace Prisma {
     machineId?: number | null
     workId?: number | null
     stageId?: number | null
+    contentLearningId?: number | null
     createdAt?: Date | string
     updatedAt?: Date | string
   }
@@ -12699,6 +15351,113 @@ export namespace Prisma {
     machineId?: NullableIntFieldUpdateOperationsInput | number | null
     workId?: NullableIntFieldUpdateOperationsInput | number | null
     stageId?: NullableIntFieldUpdateOperationsInput | number | null
+    contentLearningId?: NullableIntFieldUpdateOperationsInput | number | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type LearningCreateInput = {
+    title: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    content?: ContentLearningCreateNestedManyWithoutLearningInput
+  }
+
+  export type LearningUncheckedCreateInput = {
+    id?: number
+    title: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    content?: ContentLearningUncheckedCreateNestedManyWithoutLearningInput
+  }
+
+  export type LearningUpdateInput = {
+    title?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    content?: ContentLearningUpdateManyWithoutLearningNestedInput
+  }
+
+  export type LearningUncheckedUpdateInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    title?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    content?: ContentLearningUncheckedUpdateManyWithoutLearningNestedInput
+  }
+
+  export type LearningCreateManyInput = {
+    id?: number
+    title: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type LearningUpdateManyMutationInput = {
+    title?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type LearningUncheckedUpdateManyInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    title?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type ContentLearningCreateInput = {
+    description: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    files?: FileUploadCreateNestedManyWithoutContentLearningInput
+    learning: LearningCreateNestedOneWithoutContentInput
+  }
+
+  export type ContentLearningUncheckedCreateInput = {
+    id?: number
+    description: string
+    learningId: number
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    files?: FileUploadUncheckedCreateNestedManyWithoutContentLearningInput
+  }
+
+  export type ContentLearningUpdateInput = {
+    description?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    files?: FileUploadUpdateManyWithoutContentLearningNestedInput
+    learning?: LearningUpdateOneRequiredWithoutContentNestedInput
+  }
+
+  export type ContentLearningUncheckedUpdateInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    description?: StringFieldUpdateOperationsInput | string
+    learningId?: IntFieldUpdateOperationsInput | number
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    files?: FileUploadUncheckedUpdateManyWithoutContentLearningNestedInput
+  }
+
+  export type ContentLearningCreateManyInput = {
+    id?: number
+    description: string
+    learningId: number
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type ContentLearningUpdateManyMutationInput = {
+    description?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type ContentLearningUncheckedUpdateManyInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    description?: StringFieldUpdateOperationsInput | string
+    learningId?: IntFieldUpdateOperationsInput | number
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
@@ -13339,6 +16098,11 @@ export namespace Prisma {
     isNot?: workStageWhereInput | null
   }
 
+  export type ContentLearningNullableScalarRelationFilter = {
+    is?: ContentLearningWhereInput | null
+    isNot?: ContentLearningWhereInput | null
+  }
+
   export type FileUploadCountOrderByAggregateInput = {
     id?: SortOrder
     filename?: SortOrder
@@ -13351,6 +16115,7 @@ export namespace Prisma {
     machineId?: SortOrder
     workId?: SortOrder
     stageId?: SortOrder
+    contentLearningId?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
   }
@@ -13362,6 +16127,7 @@ export namespace Prisma {
     machineId?: SortOrder
     workId?: SortOrder
     stageId?: SortOrder
+    contentLearningId?: SortOrder
   }
 
   export type FileUploadMaxOrderByAggregateInput = {
@@ -13376,6 +16142,7 @@ export namespace Prisma {
     machineId?: SortOrder
     workId?: SortOrder
     stageId?: SortOrder
+    contentLearningId?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
   }
@@ -13392,6 +16159,7 @@ export namespace Prisma {
     machineId?: SortOrder
     workId?: SortOrder
     stageId?: SortOrder
+    contentLearningId?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
   }
@@ -13403,6 +16171,7 @@ export namespace Prisma {
     machineId?: SortOrder
     workId?: SortOrder
     stageId?: SortOrder
+    contentLearningId?: SortOrder
   }
 
   export type EnumFileTypeWithAggregatesFilter<$PrismaModel = never> = {
@@ -13413,6 +16182,84 @@ export namespace Prisma {
     _count?: NestedIntFilter<$PrismaModel>
     _min?: NestedEnumFileTypeFilter<$PrismaModel>
     _max?: NestedEnumFileTypeFilter<$PrismaModel>
+  }
+
+  export type ContentLearningListRelationFilter = {
+    every?: ContentLearningWhereInput
+    some?: ContentLearningWhereInput
+    none?: ContentLearningWhereInput
+  }
+
+  export type ContentLearningOrderByRelationAggregateInput = {
+    _count?: SortOrder
+  }
+
+  export type LearningCountOrderByAggregateInput = {
+    id?: SortOrder
+    title?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+  }
+
+  export type LearningAvgOrderByAggregateInput = {
+    id?: SortOrder
+  }
+
+  export type LearningMaxOrderByAggregateInput = {
+    id?: SortOrder
+    title?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+  }
+
+  export type LearningMinOrderByAggregateInput = {
+    id?: SortOrder
+    title?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+  }
+
+  export type LearningSumOrderByAggregateInput = {
+    id?: SortOrder
+  }
+
+  export type LearningScalarRelationFilter = {
+    is?: LearningWhereInput
+    isNot?: LearningWhereInput
+  }
+
+  export type ContentLearningCountOrderByAggregateInput = {
+    id?: SortOrder
+    description?: SortOrder
+    learningId?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+  }
+
+  export type ContentLearningAvgOrderByAggregateInput = {
+    id?: SortOrder
+    learningId?: SortOrder
+  }
+
+  export type ContentLearningMaxOrderByAggregateInput = {
+    id?: SortOrder
+    description?: SortOrder
+    learningId?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+  }
+
+  export type ContentLearningMinOrderByAggregateInput = {
+    id?: SortOrder
+    description?: SortOrder
+    learningId?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+  }
+
+  export type ContentLearningSumOrderByAggregateInput = {
+    id?: SortOrder
+    learningId?: SortOrder
   }
 
   export type AccountCreateNestedManyWithoutUserInput = {
@@ -13823,6 +16670,12 @@ export namespace Prisma {
     connect?: workStageWhereUniqueInput
   }
 
+  export type ContentLearningCreateNestedOneWithoutFilesInput = {
+    create?: XOR<ContentLearningCreateWithoutFilesInput, ContentLearningUncheckedCreateWithoutFilesInput>
+    connectOrCreate?: ContentLearningCreateOrConnectWithoutFilesInput
+    connect?: ContentLearningWhereUniqueInput
+  }
+
   export type EnumFileTypeFieldUpdateOperationsInput = {
     set?: $Enums.FileType
   }
@@ -13865,6 +16718,114 @@ export namespace Prisma {
     delete?: workStageWhereInput | boolean
     connect?: workStageWhereUniqueInput
     update?: XOR<XOR<workStageUpdateToOneWithWhereWithoutFilesInput, workStageUpdateWithoutFilesInput>, workStageUncheckedUpdateWithoutFilesInput>
+  }
+
+  export type ContentLearningUpdateOneWithoutFilesNestedInput = {
+    create?: XOR<ContentLearningCreateWithoutFilesInput, ContentLearningUncheckedCreateWithoutFilesInput>
+    connectOrCreate?: ContentLearningCreateOrConnectWithoutFilesInput
+    upsert?: ContentLearningUpsertWithoutFilesInput
+    disconnect?: ContentLearningWhereInput | boolean
+    delete?: ContentLearningWhereInput | boolean
+    connect?: ContentLearningWhereUniqueInput
+    update?: XOR<XOR<ContentLearningUpdateToOneWithWhereWithoutFilesInput, ContentLearningUpdateWithoutFilesInput>, ContentLearningUncheckedUpdateWithoutFilesInput>
+  }
+
+  export type ContentLearningCreateNestedManyWithoutLearningInput = {
+    create?: XOR<ContentLearningCreateWithoutLearningInput, ContentLearningUncheckedCreateWithoutLearningInput> | ContentLearningCreateWithoutLearningInput[] | ContentLearningUncheckedCreateWithoutLearningInput[]
+    connectOrCreate?: ContentLearningCreateOrConnectWithoutLearningInput | ContentLearningCreateOrConnectWithoutLearningInput[]
+    createMany?: ContentLearningCreateManyLearningInputEnvelope
+    connect?: ContentLearningWhereUniqueInput | ContentLearningWhereUniqueInput[]
+  }
+
+  export type ContentLearningUncheckedCreateNestedManyWithoutLearningInput = {
+    create?: XOR<ContentLearningCreateWithoutLearningInput, ContentLearningUncheckedCreateWithoutLearningInput> | ContentLearningCreateWithoutLearningInput[] | ContentLearningUncheckedCreateWithoutLearningInput[]
+    connectOrCreate?: ContentLearningCreateOrConnectWithoutLearningInput | ContentLearningCreateOrConnectWithoutLearningInput[]
+    createMany?: ContentLearningCreateManyLearningInputEnvelope
+    connect?: ContentLearningWhereUniqueInput | ContentLearningWhereUniqueInput[]
+  }
+
+  export type ContentLearningUpdateManyWithoutLearningNestedInput = {
+    create?: XOR<ContentLearningCreateWithoutLearningInput, ContentLearningUncheckedCreateWithoutLearningInput> | ContentLearningCreateWithoutLearningInput[] | ContentLearningUncheckedCreateWithoutLearningInput[]
+    connectOrCreate?: ContentLearningCreateOrConnectWithoutLearningInput | ContentLearningCreateOrConnectWithoutLearningInput[]
+    upsert?: ContentLearningUpsertWithWhereUniqueWithoutLearningInput | ContentLearningUpsertWithWhereUniqueWithoutLearningInput[]
+    createMany?: ContentLearningCreateManyLearningInputEnvelope
+    set?: ContentLearningWhereUniqueInput | ContentLearningWhereUniqueInput[]
+    disconnect?: ContentLearningWhereUniqueInput | ContentLearningWhereUniqueInput[]
+    delete?: ContentLearningWhereUniqueInput | ContentLearningWhereUniqueInput[]
+    connect?: ContentLearningWhereUniqueInput | ContentLearningWhereUniqueInput[]
+    update?: ContentLearningUpdateWithWhereUniqueWithoutLearningInput | ContentLearningUpdateWithWhereUniqueWithoutLearningInput[]
+    updateMany?: ContentLearningUpdateManyWithWhereWithoutLearningInput | ContentLearningUpdateManyWithWhereWithoutLearningInput[]
+    deleteMany?: ContentLearningScalarWhereInput | ContentLearningScalarWhereInput[]
+  }
+
+  export type ContentLearningUncheckedUpdateManyWithoutLearningNestedInput = {
+    create?: XOR<ContentLearningCreateWithoutLearningInput, ContentLearningUncheckedCreateWithoutLearningInput> | ContentLearningCreateWithoutLearningInput[] | ContentLearningUncheckedCreateWithoutLearningInput[]
+    connectOrCreate?: ContentLearningCreateOrConnectWithoutLearningInput | ContentLearningCreateOrConnectWithoutLearningInput[]
+    upsert?: ContentLearningUpsertWithWhereUniqueWithoutLearningInput | ContentLearningUpsertWithWhereUniqueWithoutLearningInput[]
+    createMany?: ContentLearningCreateManyLearningInputEnvelope
+    set?: ContentLearningWhereUniqueInput | ContentLearningWhereUniqueInput[]
+    disconnect?: ContentLearningWhereUniqueInput | ContentLearningWhereUniqueInput[]
+    delete?: ContentLearningWhereUniqueInput | ContentLearningWhereUniqueInput[]
+    connect?: ContentLearningWhereUniqueInput | ContentLearningWhereUniqueInput[]
+    update?: ContentLearningUpdateWithWhereUniqueWithoutLearningInput | ContentLearningUpdateWithWhereUniqueWithoutLearningInput[]
+    updateMany?: ContentLearningUpdateManyWithWhereWithoutLearningInput | ContentLearningUpdateManyWithWhereWithoutLearningInput[]
+    deleteMany?: ContentLearningScalarWhereInput | ContentLearningScalarWhereInput[]
+  }
+
+  export type FileUploadCreateNestedManyWithoutContentLearningInput = {
+    create?: XOR<FileUploadCreateWithoutContentLearningInput, FileUploadUncheckedCreateWithoutContentLearningInput> | FileUploadCreateWithoutContentLearningInput[] | FileUploadUncheckedCreateWithoutContentLearningInput[]
+    connectOrCreate?: FileUploadCreateOrConnectWithoutContentLearningInput | FileUploadCreateOrConnectWithoutContentLearningInput[]
+    createMany?: FileUploadCreateManyContentLearningInputEnvelope
+    connect?: FileUploadWhereUniqueInput | FileUploadWhereUniqueInput[]
+  }
+
+  export type LearningCreateNestedOneWithoutContentInput = {
+    create?: XOR<LearningCreateWithoutContentInput, LearningUncheckedCreateWithoutContentInput>
+    connectOrCreate?: LearningCreateOrConnectWithoutContentInput
+    connect?: LearningWhereUniqueInput
+  }
+
+  export type FileUploadUncheckedCreateNestedManyWithoutContentLearningInput = {
+    create?: XOR<FileUploadCreateWithoutContentLearningInput, FileUploadUncheckedCreateWithoutContentLearningInput> | FileUploadCreateWithoutContentLearningInput[] | FileUploadUncheckedCreateWithoutContentLearningInput[]
+    connectOrCreate?: FileUploadCreateOrConnectWithoutContentLearningInput | FileUploadCreateOrConnectWithoutContentLearningInput[]
+    createMany?: FileUploadCreateManyContentLearningInputEnvelope
+    connect?: FileUploadWhereUniqueInput | FileUploadWhereUniqueInput[]
+  }
+
+  export type FileUploadUpdateManyWithoutContentLearningNestedInput = {
+    create?: XOR<FileUploadCreateWithoutContentLearningInput, FileUploadUncheckedCreateWithoutContentLearningInput> | FileUploadCreateWithoutContentLearningInput[] | FileUploadUncheckedCreateWithoutContentLearningInput[]
+    connectOrCreate?: FileUploadCreateOrConnectWithoutContentLearningInput | FileUploadCreateOrConnectWithoutContentLearningInput[]
+    upsert?: FileUploadUpsertWithWhereUniqueWithoutContentLearningInput | FileUploadUpsertWithWhereUniqueWithoutContentLearningInput[]
+    createMany?: FileUploadCreateManyContentLearningInputEnvelope
+    set?: FileUploadWhereUniqueInput | FileUploadWhereUniqueInput[]
+    disconnect?: FileUploadWhereUniqueInput | FileUploadWhereUniqueInput[]
+    delete?: FileUploadWhereUniqueInput | FileUploadWhereUniqueInput[]
+    connect?: FileUploadWhereUniqueInput | FileUploadWhereUniqueInput[]
+    update?: FileUploadUpdateWithWhereUniqueWithoutContentLearningInput | FileUploadUpdateWithWhereUniqueWithoutContentLearningInput[]
+    updateMany?: FileUploadUpdateManyWithWhereWithoutContentLearningInput | FileUploadUpdateManyWithWhereWithoutContentLearningInput[]
+    deleteMany?: FileUploadScalarWhereInput | FileUploadScalarWhereInput[]
+  }
+
+  export type LearningUpdateOneRequiredWithoutContentNestedInput = {
+    create?: XOR<LearningCreateWithoutContentInput, LearningUncheckedCreateWithoutContentInput>
+    connectOrCreate?: LearningCreateOrConnectWithoutContentInput
+    upsert?: LearningUpsertWithoutContentInput
+    connect?: LearningWhereUniqueInput
+    update?: XOR<XOR<LearningUpdateToOneWithWhereWithoutContentInput, LearningUpdateWithoutContentInput>, LearningUncheckedUpdateWithoutContentInput>
+  }
+
+  export type FileUploadUncheckedUpdateManyWithoutContentLearningNestedInput = {
+    create?: XOR<FileUploadCreateWithoutContentLearningInput, FileUploadUncheckedCreateWithoutContentLearningInput> | FileUploadCreateWithoutContentLearningInput[] | FileUploadUncheckedCreateWithoutContentLearningInput[]
+    connectOrCreate?: FileUploadCreateOrConnectWithoutContentLearningInput | FileUploadCreateOrConnectWithoutContentLearningInput[]
+    upsert?: FileUploadUpsertWithWhereUniqueWithoutContentLearningInput | FileUploadUpsertWithWhereUniqueWithoutContentLearningInput[]
+    createMany?: FileUploadCreateManyContentLearningInputEnvelope
+    set?: FileUploadWhereUniqueInput | FileUploadWhereUniqueInput[]
+    disconnect?: FileUploadWhereUniqueInput | FileUploadWhereUniqueInput[]
+    delete?: FileUploadWhereUniqueInput | FileUploadWhereUniqueInput[]
+    connect?: FileUploadWhereUniqueInput | FileUploadWhereUniqueInput[]
+    update?: FileUploadUpdateWithWhereUniqueWithoutContentLearningInput | FileUploadUpdateWithWhereUniqueWithoutContentLearningInput[]
+    updateMany?: FileUploadUpdateManyWithWhereWithoutContentLearningInput | FileUploadUpdateManyWithWhereWithoutContentLearningInput[]
+    deleteMany?: FileUploadScalarWhereInput | FileUploadScalarWhereInput[]
   }
 
   export type NestedIntFilter<$PrismaModel = never> = {
@@ -14283,6 +17244,7 @@ export namespace Prisma {
     machine?: machine_cncCreateNestedOneWithoutFilesInput
     work?: workOvernightCreateNestedOneWithoutFilesInput
     stage?: workStageCreateNestedOneWithoutFilesInput
+    contentLearning?: ContentLearningCreateNestedOneWithoutFilesInput
   }
 
   export type FileUploadUncheckedCreateWithoutToolInput = {
@@ -14296,6 +17258,7 @@ export namespace Prisma {
     machineId?: number | null
     workId?: number | null
     stageId?: number | null
+    contentLearningId?: number | null
     createdAt?: Date | string
     updatedAt?: Date | string
   }
@@ -14341,6 +17304,7 @@ export namespace Prisma {
     machineId?: IntNullableFilter<"FileUpload"> | number | null
     workId?: IntNullableFilter<"FileUpload"> | number | null
     stageId?: IntNullableFilter<"FileUpload"> | number | null
+    contentLearningId?: IntNullableFilter<"FileUpload"> | number | null
     createdAt?: DateTimeFilter<"FileUpload"> | Date | string
     updatedAt?: DateTimeFilter<"FileUpload"> | Date | string
   }
@@ -14357,6 +17321,7 @@ export namespace Prisma {
     tool?: toolsCreateNestedOneWithoutFilesInput
     work?: workOvernightCreateNestedOneWithoutFilesInput
     stage?: workStageCreateNestedOneWithoutFilesInput
+    contentLearning?: ContentLearningCreateNestedOneWithoutFilesInput
   }
 
   export type FileUploadUncheckedCreateWithoutMachineInput = {
@@ -14370,6 +17335,7 @@ export namespace Prisma {
     toolId?: number | null
     workId?: number | null
     stageId?: number | null
+    contentLearningId?: number | null
     createdAt?: Date | string
     updatedAt?: Date | string
   }
@@ -14536,6 +17502,7 @@ export namespace Prisma {
     tool?: toolsCreateNestedOneWithoutFilesInput
     machine?: machine_cncCreateNestedOneWithoutFilesInput
     stage?: workStageCreateNestedOneWithoutFilesInput
+    contentLearning?: ContentLearningCreateNestedOneWithoutFilesInput
   }
 
   export type FileUploadUncheckedCreateWithoutWorkInput = {
@@ -14549,6 +17516,7 @@ export namespace Prisma {
     toolId?: number | null
     machineId?: number | null
     stageId?: number | null
+    contentLearningId?: number | null
     createdAt?: Date | string
     updatedAt?: Date | string
   }
@@ -14683,6 +17651,7 @@ export namespace Prisma {
     tool?: toolsCreateNestedOneWithoutFilesInput
     machine?: machine_cncCreateNestedOneWithoutFilesInput
     work?: workOvernightCreateNestedOneWithoutFilesInput
+    contentLearning?: ContentLearningCreateNestedOneWithoutFilesInput
   }
 
   export type FileUploadUncheckedCreateWithoutStageInput = {
@@ -14696,6 +17665,7 @@ export namespace Prisma {
     toolId?: number | null
     machineId?: number | null
     workId?: number | null
+    contentLearningId?: number | null
     createdAt?: Date | string
     updatedAt?: Date | string
   }
@@ -14874,6 +17844,26 @@ export namespace Prisma {
     create: XOR<workStageCreateWithoutFilesInput, workStageUncheckedCreateWithoutFilesInput>
   }
 
+  export type ContentLearningCreateWithoutFilesInput = {
+    description: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    learning: LearningCreateNestedOneWithoutContentInput
+  }
+
+  export type ContentLearningUncheckedCreateWithoutFilesInput = {
+    id?: number
+    description: string
+    learningId: number
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type ContentLearningCreateOrConnectWithoutFilesInput = {
+    where: ContentLearningWhereUniqueInput
+    create: XOR<ContentLearningCreateWithoutFilesInput, ContentLearningUncheckedCreateWithoutFilesInput>
+  }
+
   export type toolsUpsertWithoutFilesInput = {
     update: XOR<toolsUpdateWithoutFilesInput, toolsUncheckedUpdateWithoutFilesInput>
     create: XOR<toolsCreateWithoutFilesInput, toolsUncheckedCreateWithoutFilesInput>
@@ -15004,6 +17994,183 @@ export namespace Prisma {
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
+  export type ContentLearningUpsertWithoutFilesInput = {
+    update: XOR<ContentLearningUpdateWithoutFilesInput, ContentLearningUncheckedUpdateWithoutFilesInput>
+    create: XOR<ContentLearningCreateWithoutFilesInput, ContentLearningUncheckedCreateWithoutFilesInput>
+    where?: ContentLearningWhereInput
+  }
+
+  export type ContentLearningUpdateToOneWithWhereWithoutFilesInput = {
+    where?: ContentLearningWhereInput
+    data: XOR<ContentLearningUpdateWithoutFilesInput, ContentLearningUncheckedUpdateWithoutFilesInput>
+  }
+
+  export type ContentLearningUpdateWithoutFilesInput = {
+    description?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    learning?: LearningUpdateOneRequiredWithoutContentNestedInput
+  }
+
+  export type ContentLearningUncheckedUpdateWithoutFilesInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    description?: StringFieldUpdateOperationsInput | string
+    learningId?: IntFieldUpdateOperationsInput | number
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type ContentLearningCreateWithoutLearningInput = {
+    description: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    files?: FileUploadCreateNestedManyWithoutContentLearningInput
+  }
+
+  export type ContentLearningUncheckedCreateWithoutLearningInput = {
+    id?: number
+    description: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    files?: FileUploadUncheckedCreateNestedManyWithoutContentLearningInput
+  }
+
+  export type ContentLearningCreateOrConnectWithoutLearningInput = {
+    where: ContentLearningWhereUniqueInput
+    create: XOR<ContentLearningCreateWithoutLearningInput, ContentLearningUncheckedCreateWithoutLearningInput>
+  }
+
+  export type ContentLearningCreateManyLearningInputEnvelope = {
+    data: ContentLearningCreateManyLearningInput | ContentLearningCreateManyLearningInput[]
+    skipDuplicates?: boolean
+  }
+
+  export type ContentLearningUpsertWithWhereUniqueWithoutLearningInput = {
+    where: ContentLearningWhereUniqueInput
+    update: XOR<ContentLearningUpdateWithoutLearningInput, ContentLearningUncheckedUpdateWithoutLearningInput>
+    create: XOR<ContentLearningCreateWithoutLearningInput, ContentLearningUncheckedCreateWithoutLearningInput>
+  }
+
+  export type ContentLearningUpdateWithWhereUniqueWithoutLearningInput = {
+    where: ContentLearningWhereUniqueInput
+    data: XOR<ContentLearningUpdateWithoutLearningInput, ContentLearningUncheckedUpdateWithoutLearningInput>
+  }
+
+  export type ContentLearningUpdateManyWithWhereWithoutLearningInput = {
+    where: ContentLearningScalarWhereInput
+    data: XOR<ContentLearningUpdateManyMutationInput, ContentLearningUncheckedUpdateManyWithoutLearningInput>
+  }
+
+  export type ContentLearningScalarWhereInput = {
+    AND?: ContentLearningScalarWhereInput | ContentLearningScalarWhereInput[]
+    OR?: ContentLearningScalarWhereInput[]
+    NOT?: ContentLearningScalarWhereInput | ContentLearningScalarWhereInput[]
+    id?: IntFilter<"ContentLearning"> | number
+    description?: StringFilter<"ContentLearning"> | string
+    learningId?: IntFilter<"ContentLearning"> | number
+    createdAt?: DateTimeFilter<"ContentLearning"> | Date | string
+    updatedAt?: DateTimeFilter<"ContentLearning"> | Date | string
+  }
+
+  export type FileUploadCreateWithoutContentLearningInput = {
+    filename: string
+    originalName: string
+    path: string
+    mimeType: string
+    size: number
+    type: $Enums.FileType
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    tool?: toolsCreateNestedOneWithoutFilesInput
+    machine?: machine_cncCreateNestedOneWithoutFilesInput
+    work?: workOvernightCreateNestedOneWithoutFilesInput
+    stage?: workStageCreateNestedOneWithoutFilesInput
+  }
+
+  export type FileUploadUncheckedCreateWithoutContentLearningInput = {
+    id?: number
+    filename: string
+    originalName: string
+    path: string
+    mimeType: string
+    size: number
+    type: $Enums.FileType
+    toolId?: number | null
+    machineId?: number | null
+    workId?: number | null
+    stageId?: number | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type FileUploadCreateOrConnectWithoutContentLearningInput = {
+    where: FileUploadWhereUniqueInput
+    create: XOR<FileUploadCreateWithoutContentLearningInput, FileUploadUncheckedCreateWithoutContentLearningInput>
+  }
+
+  export type FileUploadCreateManyContentLearningInputEnvelope = {
+    data: FileUploadCreateManyContentLearningInput | FileUploadCreateManyContentLearningInput[]
+    skipDuplicates?: boolean
+  }
+
+  export type LearningCreateWithoutContentInput = {
+    title: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type LearningUncheckedCreateWithoutContentInput = {
+    id?: number
+    title: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type LearningCreateOrConnectWithoutContentInput = {
+    where: LearningWhereUniqueInput
+    create: XOR<LearningCreateWithoutContentInput, LearningUncheckedCreateWithoutContentInput>
+  }
+
+  export type FileUploadUpsertWithWhereUniqueWithoutContentLearningInput = {
+    where: FileUploadWhereUniqueInput
+    update: XOR<FileUploadUpdateWithoutContentLearningInput, FileUploadUncheckedUpdateWithoutContentLearningInput>
+    create: XOR<FileUploadCreateWithoutContentLearningInput, FileUploadUncheckedCreateWithoutContentLearningInput>
+  }
+
+  export type FileUploadUpdateWithWhereUniqueWithoutContentLearningInput = {
+    where: FileUploadWhereUniqueInput
+    data: XOR<FileUploadUpdateWithoutContentLearningInput, FileUploadUncheckedUpdateWithoutContentLearningInput>
+  }
+
+  export type FileUploadUpdateManyWithWhereWithoutContentLearningInput = {
+    where: FileUploadScalarWhereInput
+    data: XOR<FileUploadUpdateManyMutationInput, FileUploadUncheckedUpdateManyWithoutContentLearningInput>
+  }
+
+  export type LearningUpsertWithoutContentInput = {
+    update: XOR<LearningUpdateWithoutContentInput, LearningUncheckedUpdateWithoutContentInput>
+    create: XOR<LearningCreateWithoutContentInput, LearningUncheckedCreateWithoutContentInput>
+    where?: LearningWhereInput
+  }
+
+  export type LearningUpdateToOneWithWhereWithoutContentInput = {
+    where?: LearningWhereInput
+    data: XOR<LearningUpdateWithoutContentInput, LearningUncheckedUpdateWithoutContentInput>
+  }
+
+  export type LearningUpdateWithoutContentInput = {
+    title?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type LearningUncheckedUpdateWithoutContentInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    title?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
   export type AccountCreateManyUserInput = {
     id?: number
     provider: string
@@ -15062,6 +18229,7 @@ export namespace Prisma {
     machineId?: number | null
     workId?: number | null
     stageId?: number | null
+    contentLearningId?: number | null
     createdAt?: Date | string
     updatedAt?: Date | string
   }
@@ -15078,6 +18246,7 @@ export namespace Prisma {
     machine?: machine_cncUpdateOneWithoutFilesNestedInput
     work?: workOvernightUpdateOneWithoutFilesNestedInput
     stage?: workStageUpdateOneWithoutFilesNestedInput
+    contentLearning?: ContentLearningUpdateOneWithoutFilesNestedInput
   }
 
   export type FileUploadUncheckedUpdateWithoutToolInput = {
@@ -15091,6 +18260,7 @@ export namespace Prisma {
     machineId?: NullableIntFieldUpdateOperationsInput | number | null
     workId?: NullableIntFieldUpdateOperationsInput | number | null
     stageId?: NullableIntFieldUpdateOperationsInput | number | null
+    contentLearningId?: NullableIntFieldUpdateOperationsInput | number | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
@@ -15106,6 +18276,7 @@ export namespace Prisma {
     machineId?: NullableIntFieldUpdateOperationsInput | number | null
     workId?: NullableIntFieldUpdateOperationsInput | number | null
     stageId?: NullableIntFieldUpdateOperationsInput | number | null
+    contentLearningId?: NullableIntFieldUpdateOperationsInput | number | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
@@ -15121,6 +18292,7 @@ export namespace Prisma {
     toolId?: number | null
     workId?: number | null
     stageId?: number | null
+    contentLearningId?: number | null
     createdAt?: Date | string
     updatedAt?: Date | string
   }
@@ -15151,6 +18323,7 @@ export namespace Prisma {
     tool?: toolsUpdateOneWithoutFilesNestedInput
     work?: workOvernightUpdateOneWithoutFilesNestedInput
     stage?: workStageUpdateOneWithoutFilesNestedInput
+    contentLearning?: ContentLearningUpdateOneWithoutFilesNestedInput
   }
 
   export type FileUploadUncheckedUpdateWithoutMachineInput = {
@@ -15164,6 +18337,7 @@ export namespace Prisma {
     toolId?: NullableIntFieldUpdateOperationsInput | number | null
     workId?: NullableIntFieldUpdateOperationsInput | number | null
     stageId?: NullableIntFieldUpdateOperationsInput | number | null
+    contentLearningId?: NullableIntFieldUpdateOperationsInput | number | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
@@ -15179,6 +18353,7 @@ export namespace Prisma {
     toolId?: NullableIntFieldUpdateOperationsInput | number | null
     workId?: NullableIntFieldUpdateOperationsInput | number | null
     stageId?: NullableIntFieldUpdateOperationsInput | number | null
+    contentLearningId?: NullableIntFieldUpdateOperationsInput | number | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
@@ -15247,6 +18422,7 @@ export namespace Prisma {
     toolId?: number | null
     machineId?: number | null
     stageId?: number | null
+    contentLearningId?: number | null
     createdAt?: Date | string
     updatedAt?: Date | string
   }
@@ -15288,6 +18464,7 @@ export namespace Prisma {
     tool?: toolsUpdateOneWithoutFilesNestedInput
     machine?: machine_cncUpdateOneWithoutFilesNestedInput
     stage?: workStageUpdateOneWithoutFilesNestedInput
+    contentLearning?: ContentLearningUpdateOneWithoutFilesNestedInput
   }
 
   export type FileUploadUncheckedUpdateWithoutWorkInput = {
@@ -15301,6 +18478,7 @@ export namespace Prisma {
     toolId?: NullableIntFieldUpdateOperationsInput | number | null
     machineId?: NullableIntFieldUpdateOperationsInput | number | null
     stageId?: NullableIntFieldUpdateOperationsInput | number | null
+    contentLearningId?: NullableIntFieldUpdateOperationsInput | number | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
@@ -15316,6 +18494,7 @@ export namespace Prisma {
     toolId?: NullableIntFieldUpdateOperationsInput | number | null
     machineId?: NullableIntFieldUpdateOperationsInput | number | null
     stageId?: NullableIntFieldUpdateOperationsInput | number | null
+    contentLearningId?: NullableIntFieldUpdateOperationsInput | number | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
@@ -15331,6 +18510,7 @@ export namespace Prisma {
     toolId?: number | null
     machineId?: number | null
     workId?: number | null
+    contentLearningId?: number | null
     createdAt?: Date | string
     updatedAt?: Date | string
   }
@@ -15347,6 +18527,7 @@ export namespace Prisma {
     tool?: toolsUpdateOneWithoutFilesNestedInput
     machine?: machine_cncUpdateOneWithoutFilesNestedInput
     work?: workOvernightUpdateOneWithoutFilesNestedInput
+    contentLearning?: ContentLearningUpdateOneWithoutFilesNestedInput
   }
 
   export type FileUploadUncheckedUpdateWithoutStageInput = {
@@ -15360,6 +18541,7 @@ export namespace Prisma {
     toolId?: NullableIntFieldUpdateOperationsInput | number | null
     machineId?: NullableIntFieldUpdateOperationsInput | number | null
     workId?: NullableIntFieldUpdateOperationsInput | number | null
+    contentLearningId?: NullableIntFieldUpdateOperationsInput | number | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
@@ -15375,6 +18557,99 @@ export namespace Prisma {
     toolId?: NullableIntFieldUpdateOperationsInput | number | null
     machineId?: NullableIntFieldUpdateOperationsInput | number | null
     workId?: NullableIntFieldUpdateOperationsInput | number | null
+    contentLearningId?: NullableIntFieldUpdateOperationsInput | number | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type ContentLearningCreateManyLearningInput = {
+    id?: number
+    description: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type ContentLearningUpdateWithoutLearningInput = {
+    description?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    files?: FileUploadUpdateManyWithoutContentLearningNestedInput
+  }
+
+  export type ContentLearningUncheckedUpdateWithoutLearningInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    description?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    files?: FileUploadUncheckedUpdateManyWithoutContentLearningNestedInput
+  }
+
+  export type ContentLearningUncheckedUpdateManyWithoutLearningInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    description?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type FileUploadCreateManyContentLearningInput = {
+    id?: number
+    filename: string
+    originalName: string
+    path: string
+    mimeType: string
+    size: number
+    type: $Enums.FileType
+    toolId?: number | null
+    machineId?: number | null
+    workId?: number | null
+    stageId?: number | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type FileUploadUpdateWithoutContentLearningInput = {
+    filename?: StringFieldUpdateOperationsInput | string
+    originalName?: StringFieldUpdateOperationsInput | string
+    path?: StringFieldUpdateOperationsInput | string
+    mimeType?: StringFieldUpdateOperationsInput | string
+    size?: IntFieldUpdateOperationsInput | number
+    type?: EnumFileTypeFieldUpdateOperationsInput | $Enums.FileType
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    tool?: toolsUpdateOneWithoutFilesNestedInput
+    machine?: machine_cncUpdateOneWithoutFilesNestedInput
+    work?: workOvernightUpdateOneWithoutFilesNestedInput
+    stage?: workStageUpdateOneWithoutFilesNestedInput
+  }
+
+  export type FileUploadUncheckedUpdateWithoutContentLearningInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    filename?: StringFieldUpdateOperationsInput | string
+    originalName?: StringFieldUpdateOperationsInput | string
+    path?: StringFieldUpdateOperationsInput | string
+    mimeType?: StringFieldUpdateOperationsInput | string
+    size?: IntFieldUpdateOperationsInput | number
+    type?: EnumFileTypeFieldUpdateOperationsInput | $Enums.FileType
+    toolId?: NullableIntFieldUpdateOperationsInput | number | null
+    machineId?: NullableIntFieldUpdateOperationsInput | number | null
+    workId?: NullableIntFieldUpdateOperationsInput | number | null
+    stageId?: NullableIntFieldUpdateOperationsInput | number | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type FileUploadUncheckedUpdateManyWithoutContentLearningInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    filename?: StringFieldUpdateOperationsInput | string
+    originalName?: StringFieldUpdateOperationsInput | string
+    path?: StringFieldUpdateOperationsInput | string
+    mimeType?: StringFieldUpdateOperationsInput | string
+    size?: IntFieldUpdateOperationsInput | number
+    type?: EnumFileTypeFieldUpdateOperationsInput | $Enums.FileType
+    toolId?: NullableIntFieldUpdateOperationsInput | number | null
+    machineId?: NullableIntFieldUpdateOperationsInput | number | null
+    workId?: NullableIntFieldUpdateOperationsInput | number | null
+    stageId?: NullableIntFieldUpdateOperationsInput | number | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }

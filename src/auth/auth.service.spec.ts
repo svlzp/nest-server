@@ -145,18 +145,14 @@ describe('AuthService', () => {
 		it('should register a new user successfully', async () => {
 			mockUserService.findByEmail.mockResolvedValue(null)
 			mockUserService.createUser.mockResolvedValue(mockUser)
-			mockEmailService.sendVerificationToken.mockResolvedValue(undefined)
 
 			const result = await service.regesterUser(authDto, mockRequest)
 
 			expect(userService.findByEmail).toHaveBeenCalledWith(authDto.email)
 			expect(userService.createUser).toHaveBeenCalledWith(authDto)
-			expect(emailService.sendVerificationToken).toHaveBeenCalledWith(
-				mockUser
-			)
-			expect(result).toEqual({
-				message: 'you need to confirm your email address to login'
-			})
+			expect(mockRequest.session.userId).toBe(mockUser.id)
+			expect(mockRequest.session.save).toHaveBeenCalled()
+			expect(result).toEqual(mockUser)
 		})
 
 		it('should throw ConflictException if user already exists', async () => {
@@ -170,20 +166,6 @@ describe('AuthService', () => {
 			).rejects.toThrow('User already exists')
 
 			expect(userService.createUser).not.toHaveBeenCalled()
-			expect(emailService.sendVerificationToken).not.toHaveBeenCalled()
-		})
-
-		it('should send verification email to new user', async () => {
-			mockUserService.findByEmail.mockResolvedValue(null)
-			mockUserService.createUser.mockResolvedValue(mockUser)
-			mockEmailService.sendVerificationToken.mockResolvedValue(undefined)
-
-			await service.regesterUser(authDto, mockRequest)
-
-			expect(emailService.sendVerificationToken).toHaveBeenCalledTimes(1)
-			expect(emailService.sendVerificationToken).toHaveBeenCalledWith(
-				mockUser
-			)
 		})
 	})
 

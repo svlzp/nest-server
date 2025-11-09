@@ -9,7 +9,8 @@ export class FacebookProvider extends BaseOAuthService {
 			name: 'facebook',
 			authorization_url: 'https://www.facebook.com/v18.0/dialog/oauth',
 			access_url: 'https://graph.facebook.com/v18.0/oauth/access_token',
-			profile_url: 'https://graph.facebook.com/me?fields=id,email,name,picture',
+			profile_url:
+				'https://graph.facebook.com/me?fields=id,email,name,picture',
 			scopes: options.scopes,
 			client_id: options.client_id,
 			client_secret: options.client_secret

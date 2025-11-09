@@ -5,7 +5,8 @@ import { GoogleProvider } from '../provider/services/google.provider'
 
 export const getProvidrsConfig = (configServise: ConfigService): IOptions => ({
 	baseUrl:
-		configServise.getOrThrow<string>('APPLICATION_URL') || 'http://localhost:4000',
+		configServise.getOrThrow<string>('APPLICATION_URL') ||
+		'http://localhost:4000',
 	servise: [
 		new GoogleProvider({
 			client_id: configServise.get<string>('GOOGLE_CLIENT_ID') || '',

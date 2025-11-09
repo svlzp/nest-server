@@ -149,12 +149,37 @@ model FileUpload {
   
   stageId   Int?
   stage     workStage? @relation(fields: [stageId], references: [id], onDelete: Cascade)
-  
+
+  contentLearningId Int?
+  contentLearning   ContentLearning? @relation(fields: [contentLearningId], references: [id], onDelete: Cascade)
+
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
 
   @@map("files")
 }
+model Learning {
+  id        Int      @id @default(autoincrement())
+  title     String
+  content   ContentLearning[]
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@map("learnings")
+}
+model ContentLearning {
+  id        Int      @id @default(autoincrement())
+  description String
+  files     FileUpload[]
+  learning  Learning @relation(fields: [learningId], references: [id], onDelete: Cascade)
+  learningId Int
+  
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@map("content_learnings")
+}
+
 
 enum FileType {
   IMAGE

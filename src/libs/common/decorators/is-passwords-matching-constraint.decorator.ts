@@ -3,7 +3,6 @@ import {
 	ValidatorConstraint,
 	ValidatorConstraintInterface
 } from 'class-validator'
-
 import { AuthDto } from '@/auth/dto/auth.dto'
 
 @ValidatorConstraint({ name: 'IsPasswordsMatching', async: false })

@@ -1,6 +1,7 @@
 import { AuthModule } from './auth/auth.module'
 import { EmailConfirmationModule } from './auth/email-confirmation/email-confirmation.module'
 import { FilesModule } from './files/files.module'
+import { LearningModule } from './learning/learning.module'
 import { IS_DEV } from './libs/common/utils/is-dev.util'
 import { MailModule } from './libs/mail/mail.module'
 import { MachineCncModule } from './machine_cnc/machine_cnc.module'
@@ -27,7 +28,8 @@ import { ScheduleModule } from '@nestjs/schedule'
 		ToolsModule,
 		MachineCncModule,
 		WorkOvernightModule,
-		FilesModule
+		FilesModule,
+		LearningModule
 	]
 })
 export class AppModule {}

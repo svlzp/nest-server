@@ -212,6 +212,22 @@ exports.Prisma.FileUploadScalarFieldEnum = {
   machineId: 'machineId',
   workId: 'workId',
   stageId: 'stageId',
+  contentLearningId: 'contentLearningId',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+};
+
+exports.Prisma.LearningScalarFieldEnum = {
+  id: 'id',
+  title: 'title',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+};
+
+exports.Prisma.ContentLearningScalarFieldEnum = {
+  id: 'id',
+  description: 'description',
+  learningId: 'learningId',
   createdAt: 'createdAt',
   updatedAt: 'updatedAt'
 };
@@ -260,7 +276,9 @@ exports.Prisma.ModelName = {
   machine_cnc: 'machine_cnc',
   workOvernight: 'workOvernight',
   workStage: 'workStage',
-  FileUpload: 'FileUpload'
+  FileUpload: 'FileUpload',
+  Learning: 'Learning',
+  ContentLearning: 'ContentLearning'
 };
 
 /**

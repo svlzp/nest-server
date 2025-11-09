@@ -48,7 +48,7 @@ export class EmailConfirmationService {
 		})
 		return this.authService.saveSession(user, req)
 	}
-	public async sendVerificationToken(user:User) {
+	public async sendVerificationToken(user: User) {
 		const verificationToken = await this.generateToken(user.email)
 
 		await this.mailService.sendConfirmationEmail(

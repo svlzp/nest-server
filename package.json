@@ -102,6 +102,7 @@
     ],
     "coverageDirectory": "../coverage",
     "testEnvironment": "node",
+    "setupFilesAfterEnv": ["reflect-metadata"],
     "moduleNameMapper": {
       "^@/(.*)$": "<rootDir>/$1",
       "^__generated__$": "<rootDir>/../__generated__"
