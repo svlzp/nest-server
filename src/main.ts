@@ -47,11 +47,24 @@ async function bootstrap() {
 			'API для управления инструментами, станками и работами с поддержкой загрузки файлов'
 		)
 		.setVersion('1.0.0')
+		.addTag('Auth', 'Аутентификация и авторизация')
+		.addTag('User', 'Управление пользователями')
 		.addTag('Tools', 'Управление инструментами')
 		.addTag('Machine CNC', 'Управление станками')
 		.addTag('Work Overnight', 'Управление работами')
 		.addTag('Files', 'Управление файлами')
-		.addTag('Auth', 'Аутентификация и авторизация')
+		.addTag('Learning', 'Обучающие материалы')
+		.addBearerAuth(
+			{
+				type: 'http',
+				scheme: 'bearer',
+				bearerFormat: 'JWT',
+				name: 'JWT',
+				description: 'Введите JWT токен',
+				in: 'header'
+			},
+			'JWT-auth'
+		)
 		.addCookieAuth('session', {
 			type: 'apiKey',
 			in: 'cookie',
