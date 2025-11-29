@@ -5,18 +5,10 @@ import { EmailConfirmationModule } from './email-confirmation/email-confirmation
 import { ProviderModule } from './provider/provider.module'
 import { forwardRef, Module } from '@nestjs/common'
 import { ConfigModule, ConfigService } from '@nestjs/config'
-import { JwtModule } from '@nestjs/jwt'
 import { UserService } from '@/user/user.service'
 
 @Module({
 	imports: [
-		JwtModule.registerAsync({
-			imports: [ConfigModule],
-			useFactory: (configService: ConfigService) => ({
-				secret: configService.getOrThrow<string>('JWT_SECRET')
-			}),
-			inject: [ConfigService]
-		}),
 		ProviderModule.regesterAsync({
 			imports: [ConfigModule],
 			useFactory: getProvidrsConfig,

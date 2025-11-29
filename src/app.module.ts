@@ -10,7 +10,8 @@ import { ToolsModule } from './tools/tools.module'
 import { UserModule } from './user/user.module'
 import { WorkOvernightModule } from './work_overnight/work_overnight.module'
 import { Module } from '@nestjs/common'
-import { ConfigModule } from '@nestjs/config'
+import { ConfigModule, ConfigService } from '@nestjs/config'
+import { JwtModule } from '@nestjs/jwt'
 import { ScheduleModule } from '@nestjs/schedule'
 
 @Module({
@@ -18,6 +19,14 @@ import { ScheduleModule } from '@nestjs/schedule'
 		ConfigModule.forRoot({
 			isGlobal: true,
 			ignoreEnvFile: !IS_DEV
+		}),
+		JwtModule.registerAsync({
+			global: true,
+			imports: [ConfigModule],
+			useFactory: (configService: ConfigService) => ({
+				secret: configService.getOrThrow<string>('JWT_SECRET')
+			}),
+			inject: [ConfigService]
 		}),
 		ScheduleModule.forRoot(),
 		PrismaModule,
