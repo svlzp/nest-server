@@ -1,8 +1,13 @@
 import { UserService } from './user.service'
-import { GetProfileDocs, GetUserByIdDocs } from './user.swagger'
+import {
+	GetMyProfileDocs,
+	GetProfileDocs,
+	GetUserByIdDocs
+} from './user.swagger'
 import { Controller, Get, HttpCode, HttpStatus, Param } from '@nestjs/common'
 import { ApiTags } from '@nestjs/swagger'
 import { UserRole } from '__generated__'
+import { CurrentUser, JwtAuthorization, JwtPayload } from '@/auth'
 import { Authorization } from '@/auth/decorators/auth.decorator'
 import { Authorized } from '@/auth/decorators/authorized.decorator'
 
@@ -13,6 +18,7 @@ export class UserController {
 
 	@GetProfileDocs()
 	@Authorization()
+	@JwtAuthorization()
 	@HttpCode(HttpStatus.OK)
 	@Get('profile')
 	public async getProfile(@Authorized('id') userId: number) {
@@ -21,9 +27,18 @@ export class UserController {
 
 	@GetUserByIdDocs()
 	@Authorization(UserRole.ADMIN)
+	@JwtAuthorization(UserRole.ADMIN)
 	@HttpCode(HttpStatus.OK)
 	@Get('by-id/:id')
 	public async getUserById(@Param('id') id: string) {
 		return this.userService.findById(Number(id))
+	}
+
+	@GetMyProfileDocs()
+	@JwtAuthorization()
+	@HttpCode(HttpStatus.OK)
+	@Get('me')
+	public async getMyProfile(@CurrentUser() user: JwtPayload) {
+		return this.userService.findById(user.sub)
 	}
 }

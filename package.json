@@ -28,13 +28,13 @@
     "@nestjs/common": "^11.0.1",
     "@nestjs/config": "^4.0.2",
     "@nestjs/core": "^11.0.1",
+    "@nestjs/jwt": "^11.0.1",
     "@nestjs/mapped-types": "*",
     "@nestjs/platform-express": "^11.0.1",
     "@nestjs/schedule": "^6.0.1",
     "@nestjs/swagger": "^11.2.1",
     "@nestlab/google-recaptcha": "^3.10.0",
     "@prisma/client": "^6.18.0",
-    "prisma": "^6.18.0",
     "@react-email/components": "^0.1.1",
     "@react-email/html": "^0.0.11",
     "@types/multer": "^2.0.0",
@@ -46,6 +46,7 @@
     "express-session": "^1.18.1",
     "ioredis": "5.3.2",
     "multer": "^2.0.2",
+    "prisma": "^6.18.0",
     "react": "^19.2.0",
     "react-dom": "^19.2.0",
     "reflect-metadata": "^0.2.2",
@@ -102,7 +103,9 @@
     ],
     "coverageDirectory": "../coverage",
     "testEnvironment": "node",
-    "setupFilesAfterEnv": ["reflect-metadata"],
+    "setupFilesAfterEnv": [
+      "reflect-metadata"
+    ],
     "moduleNameMapper": {
       "^@/(.*)$": "<rootDir>/$1",
       "^__generated__$": "<rootDir>/../__generated__"

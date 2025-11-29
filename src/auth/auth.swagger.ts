@@ -137,3 +137,94 @@ export function LogoutDocs() {
 		})
 	)
 }
+
+export function LoginMobileDocs() {
+	return applyDecorators(
+		ApiOperation({
+			summary: 'Вход для мобильных приложений',
+			description:
+				'Аутентификация пользователя по email и паролю для мобильных приложений. Возвращает JWT токены вместо сессии.'
+		}),
+		ApiBody({ type: LoginDto }),
+		ApiResponse({
+			status: HttpStatus.OK,
+			description:
+				'Успешный вход. Возвращает access token (15 мин) и refresh token (30 дней).',
+			schema: {
+				type: 'object',
+				properties: {
+					accessToken: {
+						type: 'string',
+						description: 'JWT токен для доступа к API (15 минут)',
+						example: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9...'
+					},
+					refreshToken: {
+						type: 'string',
+						description:
+							'JWT токен для обновления access токена (30 дней)',
+						example: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9...'
+					},
+					user: {
+						type: 'object',
+						properties: {
+							id: { type: 'number' },
+							email: { type: 'string' },
+							name: { type: 'string' },
+							role: { type: 'string' }
+						}
+					}
+				}
+			}
+		}),
+		ApiNotFoundResponse({
+			description:
+				'Пользователь не найден или не имеет пароля (OAuth пользователь)'
+		}),
+		ApiUnauthorizedResponse({
+			description:
+				'Неверный пароль или email не подтвержден. Письмо с подтверждением может быть отправлено повторно.'
+		})
+	)
+}
+
+export function RefreshTokenDocs() {
+	return applyDecorators(
+		ApiOperation({
+			summary: 'Обновление access токена',
+			description:
+				'Использует refresh token для получения нового access токена. Refresh token проверяется в базе данных.'
+		}),
+		ApiBody({
+			schema: {
+				type: 'object',
+				properties: {
+					refreshToken: {
+						type: 'string',
+						description: 'Refresh token полученный при входе',
+						example: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9...'
+					}
+				},
+				required: ['refreshToken']
+			}
+		}),
+		ApiResponse({
+			status: HttpStatus.OK,
+			description: 'Успешное обновление токена',
+			schema: {
+				type: 'object',
+				properties: {
+					accessToken: {
+						type: 'string',
+						description:
+							'Новый JWT токен для доступа к API (15 минут)',
+						example: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9...'
+					}
+				}
+			}
+		}),
+		ApiUnauthorizedResponse({
+			description:
+				'Refresh token недействителен, истёк или не найден в базе данных'
+		})
+	)
+}

@@ -29,6 +29,7 @@ import { diskStorage } from 'multer'
 import * as path from 'path'
 import { v4 as uuidv4 } from 'uuid'
 import { Authorization } from '@/auth/decorators/auth.decorator'
+import { JwtAuthorization } from '@/auth/decorators/jwt-auth.decorator'
 import { AuthGuard } from '@/auth/guards/auth.guard'
 
 @ApiTags('Tools')
@@ -39,6 +40,7 @@ export class ToolsController {
 
 	@CreateToolDocs()
 	@Authorization(UserRole.ADMIN)
+	@JwtAuthorization(UserRole.ADMIN)
 	@Post()
 	@UseInterceptors(
 		FilesInterceptor('files', 10, {
@@ -93,6 +95,7 @@ export class ToolsController {
 
 	@UpdateToolDocs()
 	@Authorization(UserRole.ADMIN)
+	@JwtAuthorization(UserRole.ADMIN)
 	@Patch(':id')
 	@UseInterceptors(
 		FilesInterceptor('files', 10, {
@@ -127,6 +130,7 @@ export class ToolsController {
 		})
 	)
 	@Authorization(UserRole.ADMIN)
+	@JwtAuthorization(UserRole.ADMIN)
 	public async update(
 		@Param('id', ParseIntPipe) id: number,
 		@Body() dto: UpdateToolDto,
@@ -137,6 +141,7 @@ export class ToolsController {
 
 	@DeleteToolDocs()
 	@Authorization(UserRole.ADMIN)
+	@JwtAuthorization(UserRole.ADMIN)
 	@Delete(':id')
 	public async remove(@Param('id', ParseIntPipe) id: number) {
 		return this.toolsService.remove(id)
@@ -144,6 +149,7 @@ export class ToolsController {
 
 	@DeleteToolFileDocs()
 	@Authorization(UserRole.ADMIN)
+	@JwtAuthorization(UserRole.ADMIN)
 	@Delete(':id/files/:fileId')
 	public async removeFile(
 		@Param('id', ParseIntPipe) id: number,

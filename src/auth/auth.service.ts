@@ -10,7 +10,8 @@ import {
 	UnauthorizedException
 } from '@nestjs/common'
 import { ConfigService } from '@nestjs/config'
-import { AuthMethod } from '__generated__'
+import { JwtService } from '@nestjs/jwt'
+import { AuthMethod, TokkenType } from '__generated__'
 import { verify } from 'argon2'
 import { Request, Response } from 'express'
 import { PrismaService } from '@/prisma/prisma.service'
@@ -23,7 +24,8 @@ export class AuthService {
 		private readonly user: UserService,
 		private readonly confiServis: ConfigService,
 		private readonly providerServise: ProviderService,
-		private readonly emailService: EmailConfirmationService
+		private readonly emailService: EmailConfirmationService,
+		private readonly jwtService: JwtService
 	) {}
 
 	public async regesterUser(dto: AuthDto, req: Request) {
@@ -51,6 +53,93 @@ export class AuthService {
 		}
 		return this.saveSession(user, req)
 	}
+	public async loginUserMobile(dto: LoginDto) {
+		const user = await this.user.findByEmail(dto.email)
+		if (!user || !user.password) {
+			throw new NotFoundException('User not found')
+		}
+		const isPasswordValid = await verify(user.password, dto.password)
+		if (!isPasswordValid) {
+			throw new UnauthorizedException('Invalid credentials')
+		}
+		if (!user.isVerified) {
+			await this.emailService.sendVerificationToken(user)
+			throw new UnauthorizedException('Please verify your email to login')
+		}
+
+		const accessToken = this.jwtService.sign(
+			{ sub: user.id, email: user.email, role: user.role },
+			{ expiresIn: '15m' }
+		)
+
+		const refreshToken = this.jwtService.sign(
+			{ sub: user.id, email: user.email, type: 'refresh' },
+			{ expiresIn: '30d' }
+		)
+
+		await this.prisma.tokken.create({
+			data: {
+				email: user.email,
+				type: TokkenType.REFRESH_TOKEN,
+				token: refreshToken,
+				expiresIn: new Date(Date.now() + 30 * 24 * 60 * 60 * 1000) // 30 дней
+			}
+		})
+
+		return {
+			accessToken,
+			refreshToken,
+			user: {
+				id: user.id,
+				email: user.email,
+				name: user.name,
+				role: user.role
+			}
+		}
+	}
+
+	public async refreshAccessToken(refreshToken: string) {
+		try {
+			const payload = this.jwtService.verify(refreshToken)
+
+			if (payload.type !== 'refresh') {
+				throw new UnauthorizedException('Invalid token type')
+			}
+
+			const storedToken = await this.prisma.tokken.findFirst({
+				where: {
+					token: refreshToken,
+					type: TokkenType.REFRESH_TOKEN,
+					expiresIn: {
+						gte: new Date()
+					}
+				}
+			})
+
+			if (!storedToken) {
+				throw new UnauthorizedException(
+					'Refresh token not found or expired'
+				)
+			}
+
+			const user = await this.user.findByEmail(payload.email)
+			if (!user) {
+				throw new NotFoundException('User not found')
+			}
+
+			const accessToken = this.jwtService.sign(
+				{ sub: user.id, email: user.email, role: user.role },
+				{ expiresIn: '15m' }
+			)
+
+			return {
+				accessToken
+			}
+		} catch {
+			throw new UnauthorizedException('Invalid refresh token')
+		}
+	}
+
 	public async extractProfileFromCode(
 		req: Request,
 		provider: string,

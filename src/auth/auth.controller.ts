@@ -1,9 +1,11 @@
 import { AuthService } from './auth.service'
 import {
 	LoginDocs,
+	LoginMobileDocs,
 	LogoutDocs,
 	OAuthCallbackDocs,
 	OAuthConnectDocs,
+	RefreshTokenDocs,
 	RegisterDocs
 } from './auth.swagger'
 import { AuthDto } from './dto/auth.dto'
@@ -49,6 +51,19 @@ export class AuthController {
 	@HttpCode(HttpStatus.OK)
 	async loginUser(@Req() req: Request, @Body() dto: LoginDto) {
 		return this.authService.loginUser(req, dto)
+	}
+	@LoginMobileDocs()
+	@Post('login/mobile')
+	@HttpCode(HttpStatus.OK)
+	async loginUserMobile(@Body() dto: LoginDto) {
+		return this.authService.loginUserMobile(dto)
+	}
+
+	@RefreshTokenDocs()
+	@Post('refresh')
+	@HttpCode(HttpStatus.OK)
+	async refreshToken(@Body('refreshToken') refreshToken: string) {
+		return this.authService.refreshAccessToken(refreshToken)
 	}
 	@OAuthCallbackDocs()
 	@Get('oauth/callback/:provider')

@@ -22,6 +22,8 @@ describe('AuthController', () => {
 	const mockAuthService = {
 		regesterUser: jest.fn(),
 		loginUser: jest.fn(),
+		loginUserMobile: jest.fn(),
+		refreshAccessToken: jest.fn(),
 		extractProfileFromCode: jest.fn(),
 		logoutUser: jest.fn()
 	}
@@ -192,6 +194,157 @@ describe('AuthController', () => {
 			await expect(
 				controller.loginUser(mockRequest, loginDto)
 			).rejects.toThrow('Please verify your email first')
+		})
+	})
+
+	describe('loginUserMobile', () => {
+		const loginDto: LoginDto = {
+			email: 'test@example.com',
+			password: 'Password123!'
+		}
+
+		it('should login mobile user and return JWT tokens', async () => {
+			const expectedResult = {
+				accessToken: 'mock-access-token',
+				refreshToken: 'mock-refresh-token',
+				user: {
+					id: 1,
+					email: loginDto.email,
+					name: 'Test User',
+					role: 'USER'
+				}
+			}
+			mockAuthService.loginUserMobile.mockResolvedValue(expectedResult)
+
+			const result = await controller.loginUserMobile(loginDto)
+
+			expect(authService.loginUserMobile).toHaveBeenCalledWith(loginDto)
+			expect(result).toEqual(expectedResult)
+			expect(result.accessToken).toBeDefined()
+			expect(result.refreshToken).toBeDefined()
+			expect(result.user).toBeDefined()
+		})
+
+		it('should throw NotFoundException if user does not exist', async () => {
+			mockAuthService.loginUserMobile.mockRejectedValue(
+				new NotFoundException('User not found')
+			)
+
+			await expect(controller.loginUserMobile(loginDto)).rejects.toThrow(
+				NotFoundException
+			)
+		})
+
+		it('should throw UnauthorizedException for invalid credentials', async () => {
+			mockAuthService.loginUserMobile.mockRejectedValue(
+				new UnauthorizedException('Invalid credentials')
+			)
+
+			await expect(controller.loginUserMobile(loginDto)).rejects.toThrow(
+				UnauthorizedException
+			)
+		})
+
+		it('should throw UnauthorizedException if email is not verified', async () => {
+			mockAuthService.loginUserMobile.mockRejectedValue(
+				new UnauthorizedException('Please verify your email to login')
+			)
+
+			await expect(controller.loginUserMobile(loginDto)).rejects.toThrow(
+				'Please verify your email to login'
+			)
+		})
+
+		it('should return tokens with correct structure', async () => {
+			const mockResponse = {
+				accessToken: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9...',
+				refreshToken: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9...',
+				user: {
+					id: 1,
+					email: 'test@example.com',
+					name: 'Test User',
+					role: 'USER'
+				}
+			}
+			mockAuthService.loginUserMobile.mockResolvedValue(mockResponse)
+
+			const result = await controller.loginUserMobile(loginDto)
+
+			expect(typeof result.accessToken).toBe('string')
+			expect(typeof result.refreshToken).toBe('string')
+			expect(result.user.id).toBe(1)
+			expect(result.user.email).toBe('test@example.com')
+		})
+	})
+
+	describe('refreshToken', () => {
+		const refreshToken = 'valid-refresh-token'
+
+		it('should refresh access token successfully', async () => {
+			const expectedResult = {
+				accessToken: 'new-access-token'
+			}
+			mockAuthService.refreshAccessToken.mockResolvedValue(expectedResult)
+
+			const result = await controller.refreshToken(refreshToken)
+
+			expect(authService.refreshAccessToken).toHaveBeenCalledWith(
+				refreshToken
+			)
+			expect(result).toEqual(expectedResult)
+			expect(result.accessToken).toBeDefined()
+		})
+
+		it('should throw UnauthorizedException if refresh token is invalid', async () => {
+			mockAuthService.refreshAccessToken.mockRejectedValue(
+				new UnauthorizedException('Invalid refresh token')
+			)
+
+			await expect(controller.refreshToken(refreshToken)).rejects.toThrow(
+				UnauthorizedException
+			)
+		})
+
+		it('should throw UnauthorizedException if refresh token is expired', async () => {
+			mockAuthService.refreshAccessToken.mockRejectedValue(
+				new UnauthorizedException('Refresh token not found or expired')
+			)
+
+			await expect(controller.refreshToken(refreshToken)).rejects.toThrow(
+				'Refresh token not found or expired'
+			)
+		})
+
+		it('should throw UnauthorizedException if token type is invalid', async () => {
+			mockAuthService.refreshAccessToken.mockRejectedValue(
+				new UnauthorizedException('Invalid token type')
+			)
+
+			await expect(controller.refreshToken(refreshToken)).rejects.toThrow(
+				'Invalid token type'
+			)
+		})
+
+		it('should throw NotFoundException if user not found', async () => {
+			mockAuthService.refreshAccessToken.mockRejectedValue(
+				new NotFoundException('User not found')
+			)
+
+			await expect(controller.refreshToken(refreshToken)).rejects.toThrow(
+				NotFoundException
+			)
+		})
+
+		it('should return new access token with correct structure', async () => {
+			const mockResponse = {
+				accessToken: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9...'
+			}
+			mockAuthService.refreshAccessToken.mockResolvedValue(mockResponse)
+
+			const result = await controller.refreshToken(refreshToken)
+
+			expect(typeof result.accessToken).toBe('string')
+			expect(result.accessToken.length).toBeGreaterThan(0)
 		})
 	})
 

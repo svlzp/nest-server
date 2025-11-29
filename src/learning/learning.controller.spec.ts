@@ -3,6 +3,8 @@ import { LearningController } from './learning.controller'
 import { LearningService } from './learning.service'
 import { Test, TestingModule } from '@nestjs/testing'
 import { AuthGuard } from '@/auth/guards/auth.guard'
+import { JwtAuthGuard } from '@/auth/guards/jwt.guard'
+import { RolesGuard } from '@/auth/guards/roles.guard'
 
 describe('LearningController', () => {
 	let controller: LearningController
@@ -26,6 +28,10 @@ describe('LearningController', () => {
 			]
 		})
 			.overrideGuard(AuthGuard)
+			.useValue({ canActivate: () => true })
+			.overrideGuard(JwtAuthGuard)
+			.useValue({ canActivate: () => true })
+			.overrideGuard(RolesGuard)
 			.useValue({ canActivate: () => true })
 			.compile()
 

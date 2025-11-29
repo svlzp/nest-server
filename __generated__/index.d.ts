@@ -96,7 +96,8 @@ export type AuthMethod = (typeof AuthMethod)[keyof typeof AuthMethod]
 export const TokkenType: {
   VERIFICATION: 'VERIFICATION',
   RESET_PASSWORD: 'RESET_PASSWORD',
-  TWO_FACTOR_AUTH: 'TWO_FACTOR_AUTH'
+  TWO_FACTOR_AUTH: 'TWO_FACTOR_AUTH',
+  REFRESH_TOKEN: 'REFRESH_TOKEN'
 };
 
 export type TokkenType = (typeof TokkenType)[keyof typeof TokkenType]

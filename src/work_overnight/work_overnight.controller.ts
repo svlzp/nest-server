@@ -28,6 +28,7 @@ import {
 import { ApiTags } from '@nestjs/swagger'
 import { UserRole } from '__generated__'
 import { Authorization } from '@/auth/decorators/auth.decorator'
+import { JwtAuthorization } from '@/auth/decorators/jwt-auth.decorator'
 import { AuthGuard } from '@/auth/guards/auth.guard'
 
 @ApiTags('Work Overnight')
@@ -38,6 +39,7 @@ export class WorkOvernightController {
 
 	@CreateWorkDocs()
 	@Authorization(UserRole.ADMIN)
+	@JwtAuthorization(UserRole.ADMIN)
 	@Post()
 	create(@Body() createWorkDto: CreateWorkDto) {
 		return this.workOvernightService.create(createWorkDto)
@@ -72,6 +74,7 @@ export class WorkOvernightController {
 
 	@UpdateWorkDocs()
 	@Authorization(UserRole.ADMIN)
+	@JwtAuthorization(UserRole.ADMIN)
 	@Patch(':id')
 	update(
 		@Param('id', ParseIntPipe) id: number,
@@ -81,6 +84,8 @@ export class WorkOvernightController {
 	}
 
 	@UpdateQuantityDocs()
+	@Authorization()
+	@JwtAuthorization()
 	@Patch('quantity/update')
 	updateQuantity(@Body() updateQuantityDto: UpdateQuantityDto) {
 		return this.workOvernightService.updateQuantityByRt(updateQuantityDto)
@@ -88,6 +93,7 @@ export class WorkOvernightController {
 
 	@DeleteWorkDocs()
 	@Authorization(UserRole.ADMIN)
+	@JwtAuthorization(UserRole.ADMIN)
 	@Delete(':id')
 	remove(@Param('id', ParseIntPipe) id: number) {
 		return this.workOvernightService.remove(id)

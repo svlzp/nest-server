@@ -29,6 +29,7 @@ import { diskStorage } from 'multer'
 import * as path from 'path'
 import { v4 as uuidv4 } from 'uuid'
 import { Authorization } from '@/auth/decorators/auth.decorator'
+import { JwtAuthorization } from '@/auth/decorators/jwt-auth.decorator'
 import { AuthGuard } from '@/auth/guards/auth.guard'
 
 @ApiTags('Machine CNC')
@@ -39,6 +40,7 @@ export class MachineCncController {
 
 	@CreateMachineDocs()
 	@Authorization(UserRole.ADMIN)
+	@JwtAuthorization(UserRole.ADMIN)
 	@Post()
 	@UseInterceptors(
 		FilesInterceptor('files', 10, {
@@ -88,6 +90,7 @@ export class MachineCncController {
 
 	@UpdateMachineDocs()
 	@Authorization(UserRole.ADMIN)
+	@JwtAuthorization(UserRole.ADMIN)
 	@Patch(':id')
 	@UseInterceptors(
 		FilesInterceptor('files', 10, {
@@ -125,6 +128,7 @@ export class MachineCncController {
 	}
 
 	@DeleteMachineDocs()
+	@JwtAuthorization(UserRole.ADMIN)
 	@Authorization(UserRole.ADMIN)
 	@Delete(':id')
 	remove(@Param('id', ParseIntPipe) id: number) {
@@ -133,6 +137,7 @@ export class MachineCncController {
 
 	@DeleteMachineFileDocs()
 	@Authorization(UserRole.ADMIN)
+	@JwtAuthorization(UserRole.ADMIN)
 	@Delete(':id/files/:fileId')
 	removeFile(
 		@Param('id', ParseIntPipe) id: number,

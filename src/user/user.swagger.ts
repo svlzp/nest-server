@@ -62,3 +62,26 @@ export function GetUserByIdDocs() {
 		})
 	)
 }
+
+export function GetMyProfileDocs() {
+	return applyDecorators(
+		ApiBearerAuth(),
+		ApiOperation({
+			summary: 'Получение профиля для мобильных приложений (JWT)',
+			description:
+				'Возвращает полную информацию о профиле авторизованного пользователя. Использует JWT токен из заголовка Authorization. Предназначено для мобильных приложений.'
+		}),
+		ApiResponse({
+			status: HttpStatus.OK,
+			description: 'Профиль пользователя успешно получен',
+			type: UserResponseDto
+		}),
+		ApiUnauthorizedResponse({
+			description:
+				'JWT токен отсутствует, недействителен или истёк срок действия'
+		}),
+		ApiNotFoundResponse({
+			description: 'Пользователь не найден'
+		})
+	)
+}

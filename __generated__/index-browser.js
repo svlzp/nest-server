@@ -260,7 +260,8 @@ exports.AuthMethod = exports.$Enums.AuthMethod = {
 exports.TokkenType = exports.$Enums.TokkenType = {
   VERIFICATION: 'VERIFICATION',
   RESET_PASSWORD: 'RESET_PASSWORD',
-  TWO_FACTOR_AUTH: 'TWO_FACTOR_AUTH'
+  TWO_FACTOR_AUTH: 'TWO_FACTOR_AUTH',
+  REFRESH_TOKEN: 'REFRESH_TOKEN'
 };
 
 exports.FileType = exports.$Enums.FileType = {
