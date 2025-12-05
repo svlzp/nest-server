@@ -3,55 +3,50 @@
 # Стадия 1: Сборка приложения
 FROM node:20-alpine AS builder
 
-# Установка зависимостей для сборки
-RUN apk add --no-cache openssl
-
 WORKDIR /app
 
-# Копирование файлов зависимостей
+# Копируем package files
 COPY package*.json ./
 COPY prisma ./prisma/
 
-# Установка зависимостей
+# Устанавливаем зависимости
 RUN npm ci
 
-# Копирование исходного кода
+# Копируем исходники
 COPY . .
 
-# Генерация Prisma Client и сборка приложения
+# Генерируем Prisma Client
 RUN npx prisma generate
+
+# Генерируем React Email шаблоны
+RUN npm run email:build || echo "Email templates build skipped"
+
+# Собираем приложение
 RUN npm run build
 
-# Удаление dev зависимостей
-RUN npm prune --production
-
-# Стадия 2: Production образ
-FROM node:20-alpine AS production
-
-# Установка необходимых системных пакетов
-RUN apk add --no-cache openssl curl
+# Production image
+FROM node:20-alpine
 
 WORKDIR /app
 
-# Копирование только необходимых файлов из builder
+# Копируем node_modules и сборку из builder
 COPY --from=builder /app/node_modules ./node_modules
 COPY --from=builder /app/dist ./dist
 COPY --from=builder /app/prisma ./prisma
 COPY --from=builder /app/package*.json ./
 
-# Создание пользователя без прав root
-RUN addgroup -g 1001 -S nodejs && \
-    adduser -S nestjs -u 1001
+# Копируем сгенерированные email шаблоны
+COPY --from=builder /app/.react-email ./.react-email
 
-# Переключение на пользователя nestjs
-USER nestjs
+# Создаем директории для uploads и logs
+RUN mkdir -p uploads logs
 
-# Открытие порта
+# Устанавливаем права
+RUN chown -R node:node /app
+
+USER node
+
 EXPOSE 3000
 
-# Health check
-HEALTHCHECK --interval=30s --timeout=3s --start-period=40s --retries=3 \
-  CMD curl -f http://localhost:3000/api/health || exit 1
-
-# Запуск приложения
-CMD ["node", "dist/main.js"]
+# Команда запуска
+CMD ["sh", "-c", "npx prisma migrate deploy && node dist/main"]
