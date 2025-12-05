@@ -24,8 +24,8 @@ RUN npm run email:build || echo "Email templates build skipped"
 # Собираем приложение
 RUN npm run build
 
-# Production image
-FROM node:20-alpine
+# Production stage
+FROM node:20-alpine AS production
 
 WORKDIR /app
 
@@ -35,14 +35,12 @@ COPY --from=builder /app/dist ./dist
 COPY --from=builder /app/prisma ./prisma
 COPY --from=builder /app/package*.json ./
 
-# Копируем сгенерированные email шаблоны
-COPY --from=builder /app/.react-email ./.react-email
+# Копируем сгенерированные email шаблоны если есть
+COPY --from=builder /app/.react-email ./.react-email 2>/dev/null || :
 
 # Создаем директории для uploads и logs
-RUN mkdir -p uploads logs
-
-# Устанавливаем права
-RUN chown -R node:node /app
+RUN mkdir -p uploads logs && \
+    chown -R node:node /app
 
 USER node
 
