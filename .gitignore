@@ -1,5 +1,6 @@
 # Dependencies
 node_modules/
+package-lock.json
 
 # Build
 dist/
@@ -7,7 +8,9 @@ build/
 
 # Environment
 .env
-.env.*
+.env.local
+.env.development
+.env.production
 !.env.example
 
 # Logs
@@ -37,4 +40,4 @@ coverage/
 *.pem
 *.key
 id_rsa*
-github_actions*
+github_deploy*

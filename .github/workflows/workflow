@@ -35,10 +35,8 @@ jobs:
             --exclude='dist' \
             --exclude='*.log' \
             --exclude='.env' \
-            --exclude='.env.*' \
             --exclude='uploads' \
             --exclude='logs' \
-            --exclude='coverage' \
             --exclude='*.tar.gz' \
             Dockerfile docker-compose.yml .dockerignore \
             package.json package-lock.json prisma src \
@@ -54,31 +52,34 @@ jobs:
             set -e
             
             APP_DIR="/var/www/nest-server"
+            
+            # Создайте директорию если не существует
+            sudo mkdir -p $APP_DIR
+            sudo chown -R Minus:Minus $APP_DIR
+            
             cd $APP_DIR
             
             echo "🚀 Starting deployment..."
             
             # Backup
             if [ -d "src" ]; then
-              echo "📦 Creating backup..."
               tar -czf backup_$(date +%Y%m%d_%H%M%S).tar.gz src package.json 2>/dev/null || true
+              ls -t backup_*.tar.gz 2>/dev/null | tail -n +6 | xargs rm -f 2>/dev/null || true
             fi
             
             # Extract
-            echo "📦 Extracting..."
             tar -xzf ~/deploy.tar.gz
             rm ~/deploy.tar.gz
             
             # Check .env
             if [ ! -f .env ]; then
-              echo "❌ .env not found!"
-              exit 1
+              echo "⚠️  .env not found, creating from example..."
+              cp .env.example .env || echo "❌ No .env.example found!"
             fi
             
             # Deploy
-            echo "🐳 Docker deployment..."
-            docker compose down
-            docker system prune -f
+            docker compose down || true
+            docker system prune -f || true
             docker compose build --no-cache
             docker compose up -d
             
@@ -94,8 +95,6 @@ jobs:
             done
             
             docker compose ps
-            docker compose logs app --tail=30
-            
             echo "✅ Deployment completed!"
           ENDSSH
 
