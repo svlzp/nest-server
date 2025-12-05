@@ -1,7 +1,7 @@
 # Multi-stage build для оптимизации размера образа
 
 # Стадия 1: Сборка приложения
-FROM node:20-alpine AS builder
+FROM node:20-alpine
 
 WORKDIR /app
 
@@ -18,7 +18,7 @@ COPY . .
 # Генерируем Prisma Client
 RUN npx prisma generate
 
-# Генерируем React Email шаблоны
+# Генерируем React Email шаблоны (игнорируем ошибку если нет)
 RUN npm run email:build || true
 
 # Собираем приложение
