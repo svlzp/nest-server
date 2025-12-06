@@ -21,6 +21,7 @@ services:
       interval: 10s
       timeout: 5s
       retries: 5
+    command: postgres -c ssl=off
 
   # Redis Cache
   redis:
@@ -39,6 +40,19 @@ services:
       interval: 10s
       timeout: 5s
       retries: 5
+
+  # Adminer Database Management Tool
+  adminer:
+    image: adminer:latest
+    container_name: nest_adminer
+    restart: unless-stopped
+    ports:
+      - "8080:8080"
+    networks:
+      - app_network
+    environment:
+      ADMINER_DEFAULT_SERVER: db
+      ADMINER_DESIGN: pepa-linha
 
   # NestJS Application
   app:
